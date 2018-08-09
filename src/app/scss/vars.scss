@@ -1,0 +1,76 @@
+:root {
+  --font-weight__light           : 300;
+  --font-weight__regular         : 400;
+  --font-weight__semibold        : 600;
+  --font-weight__bold            : 700;
+  --font-weight__black           : 800;
+
+  // radius
+  --border__radius: 4px;
+
+  // font
+  --font-size__heading1          : 3.2rem;
+  --font-size__heading2          : 3rem;
+  --font-size__heading3          : 2rem;
+  --font-size__heading4          : 1.4rem;
+
+  --font-size__paragraph-tiny    : .9rem;
+  --font-size__paragraph-small   : 1.2rem;
+  --font-size__paragraph-medium  : 1.4rem;
+  --font-size__paragraph         : 1.6rem;
+
+  --font-size__button-large      : 1.6rem;
+  --font-size__button-medium     : 1.4rem;
+  --font-size__button-small      : var(--font-size__paragraph-small);
+
+  --font-size__caret             : 1.4rem;
+
+  --font-size__chevron           : 1.8rem;
+
+  --font-size__header-nav-btn    : 1.2rem;
+  --font-size__header-title      : 1.5rem;
+
+  --font-size__tabs-btn          : 1.2rem;
+  --font-size__show-hide-btn     : 1.2rem;
+
+  --font-size__label-small       : 1.4rem;
+  --font-size__label-medium      : 2rem;
+  --font-size__label-large       : 3rem;
+  --font-size__label-x-large     : 5rem;
+
+  --font-size__page-title        : 2rem;
+
+  --font-size__icon-tiny         : .8rem;
+  --font-size__icon-small        : 1rem;
+  --font-size__icon              : 1.3rem;
+  --font-size__icon-med-small    : 2rem;
+  --font-size__icon-medium       : 2.2rem;
+  --font-size__icon-large        : 4.4rem;
+  --font-size__icon-x-large      : 8rem;
+
+  --font-size__field-entry       : 3.3rem;
+  --font-size__field-entry-small : 1.8rem;
+
+  // page settings
+  --page__padding                : 16px;
+  --page__padding--half          : 8px;
+  --page__padding--small         : 12px;
+  --page__padding--medium        : var(--page__padding) + var(--page__padding) / 2;
+  --page__padding--double        : var(--page__padding) * 2;
+  --page__padding--large         : 40px;
+  --page__padding--xlarge        : var(--page__padding--large) + var(--page__padding);
+  --page__padding--xxlarge       : var(--page__padding--large) * 2;
+
+  --width-full                   : 100%;
+
+  // z-index - generic
+  --z__hide                      : -1;
+  --z__reset                     : auto;
+  --z__low                       : 1;
+  --z__medium                    : 2;
+  --z__high                      : 3;
+  --z__higher                    : 4;
+  --z__below-modal               : 11;
+  --z__modal                     : 99;
+  --z__above-all                 : 100;
+}

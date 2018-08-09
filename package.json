@@ -1,0 +1,189 @@
+{
+  "name": "ionic4-template",
+  "version": "0.0.1",
+  "author": "Russ Carver",
+  "description": "A blank starter project for Ionic 4",
+  "homepage": "http://www.russcarver.com/",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/russcarver/ionic4-project-template"
+  },
+  "scripts": {
+    "add-ios-dev": "npm run pre-script && npm run gen-config-dev && NODE_ENV=dev cordova platform add ios@4.5.5 --nosave --nofetch",
+    "add-ios-prod": "npm run pre-script && npm run gen-config-prod && NODE_ENV=prod cordova platform add ios@4.5.5 --nosave --nofetch",
+    "add-ios-test": "npm run pre-script && npm run gen-config-test && NODE_ENV=test cordova platform add ios@4.5.5 --nosave --nofetch",
+    "add-md-dev": "npm run pre-script && npm run gen-config-dev && cross-env NODE_ENV=dev cordova platform add android@6.4.0 --nosave --nofetch",
+    "add-md-prod": "npm run pre-script && npm run gen-config-prod && cross-env NODE_ENV=prod cordova platform add android@6.4.0 --nosave --nofetch",
+    "add-md-test": "npm run pre-script && npm run gen-config-test && cross-env NODE_ENV=test cordova platform add android@6.4.0 --nosave --nofetch",
+    "build-dev": "npm run pre-script && NODE_ENV=dev ng build --configuration=dev",
+    "build-prod": "npm run pre-script && NODE_ENV=prod ng build --configuration=production",
+    "build-test": "npm run pre-script && NODE_ENV=test ng build --configuration=test",
+    "clean-project": "rm -rf www/* && rm -rf plugins/* && rm -rf platforms/*",
+    "e2e": "ng e2e",
+    "gen-config-dev": "cross-env NODE_ENV=dev node ./scripts/generate-config.js && cross-env NODE_ENV=dev node ./scripts/generate-index.js",
+    "gen-config-prod": "cross-env NODE_ENV=prod node ./scripts/generate-config.js && cross-env NODE_ENV=prod node ./scripts/generate-index.js",
+    "gen-config-test": "cross-env NODE_ENV=test node ./scripts/generate-config.js && cross-env NODE_ENV=test node ./scripts/generate-index.js",
+    "lint": "ng lint",
+    "ng": "ng",
+    "no-csp": "node ./scripts/generate-index.js 'no-csp'",
+    "pre-script": "node ./generators",
+    "refresh-project": "rm -rf www/* && rm -rf plugins/* && rm -rf platforms/* && rm -rf node_modules/* && npm install",
+    "run-md-dev": "npm run pre-script && NODE_ENV=dev ng build --configuration=dev && cross-env NODE_ENV=dev ionic cordova run android device --no-interactive",
+    "run-md-prod": "npm run pre-script && NODE_ENV=prod ng build --configuration=prod && cross-env NODE_ENV=prod ionic cordova run android --prod device --no-interactive",
+    "run-md-test": "npm run pre-script && NODE_ENV=test ng build --configuration=test && cross-env NODE_ENV=test ionic cordova run android --aot device --no-interactive",
+    "start": "npm run pre-script && npm run no-csp && cross-env NODE_ENV=dev ng serve --configuration=dev",
+    "test": "npm run pre-script && NODE_OPTIONS=--max-old-space-size=$npm_package_config_jest_memory_size jest --watch",
+    "test-no-cache": "npm test -- --watch --no-cache",
+    "single-test-run": "npm run pre-script && NODE_OPTIONS=--max-old-space-size=$npm_package_config_jest_memory_size jest"
+  },
+  "dependencies": {
+    "@angular/animations": "6.1.2",
+    "@angular/common": "6.1.2",
+    "@angular/core": "6.1.2",
+    "@angular/forms": "6.1.2",
+    "@angular/http": "6.1.2",
+    "@angular/platform-browser": "6.1.2",
+    "@angular/platform-browser-dynamic": "6.1.2",
+    "@angular/router": "6.1.2",
+    "@ionic-native/core": "5.0.0-beta.14",
+    "@ionic-native/device": "5.0.0-beta.14",
+    "@ionic-native/file": "5.0.0-beta.14",
+    "@ionic-native/http": "5.0.0-beta.14",
+    "@ionic-native/in-app-browser": "5.0.0-beta.14",
+    "@ionic-native/keyboard": "5.0.0-beta.14",
+    "@ionic-native/screen-orientation": "5.0.0-beta.14",
+    "@ionic-native/splash-screen": "5.0.0-beta.14",
+    "@ionic-native/status-bar": "5.0.0-beta.14",
+    "@ionic/angular": "4.0.0-beta.0",
+    "@ionic/ng-toolkit": "1.0.0",
+    "@ionic/schematics-angular": "1.0.1",
+    "@ionic/storage": "2.1.3",
+    "cordova": "7.1.0",
+    "cordova-android": "6.4.0",
+    "cordova-ios": "4.5.5",
+    "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-file": "6.0.1",
+    "cordova-plugin-inappbrowser": "3.0.0",
+    "cordova-plugin-ionic-keyboard": "2.1.2",
+    "cordova-plugin-ionic-webview": "2.0.2",
+    "cordova-plugin-keyboard": "1.2.0",
+    "cordova-plugin-screen-orientation": "3.0.1",
+    "cordova-plugin-splashscreen": "5.0.2",
+    "cordova-plugin-statusbar": "2.4.2",
+    "cordova-plugin-whitelist": "1.3.3",
+    "core-js": "2.5.3",
+    "es6-promise-plugin": "4.2.2",
+    "http-status-codes": "1.3.0",
+    "ionic": "4.0.6",
+    "ionic-angular": "3.9.2",
+    "ionicons": "4.3.0",
+    "lodash": "4.17.10",
+    "moment": "2.22.2",
+    "rxjs": "6.2.2",
+    "zone.js": "0.8.26"
+  },
+  "devDependencies": {
+    "@angular-devkit/architect": "0.7.2",
+    "@angular-devkit/build-angular": "0.7.2",
+    "@angular-devkit/core": "0.7.2",
+    "@angular-devkit/schematics": "0.7.2",
+    "@angular/cli": "6.1.2",
+    "@angular/compiler": "6.1.2",
+    "@angular/compiler-cli": "6.1.2",
+    "@angular/language-service": "6.1.2",
+    "@types/jasmine": "2.8.6",
+    "@types/jasminewd2": "2.0.3",
+    "@types/jest": "23.3.1",
+    "@types/node": "10.5.2",
+    "codelyzer": "4.4.2",
+    "cross-env": "5.1.1",
+    "jasmine-core": "2.99.1",
+    "jasmine-spec-reporter": "4.2.1",
+    "jest": "23.4.2",
+    "jest-preset-angular": "6.0.0",
+    "npm": "6.2.0",
+    "protractor": "5.4.0",
+    "rxjs-compat": "6.2.2",
+    "ts-node": "7.0.0",
+    "tslint": "5.11.0",
+    "tslint-eslint-rules": "5.3.1",
+    "typescript": "2.7.2"
+  },
+  "engines": {
+    "node": "8.11.3",
+    "npm": "6.2.0"
+  },
+  "config": {
+    "jest_memory_size": "4096",
+    "app_name_prod": "Tournament",
+    "app_name_test": "Tournament-test",
+    "app_name_dev": "Tournament-dev",
+    "app_baseurl_prod": "http://prod.server:8080",
+    "app_baseurl_test": "http://test.server:8080",
+    "app_baseurl_dev": "http://dev.server:8080",
+    "google_play_services_version": "11.0.4"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-device": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-keyboard": {},
+      "cordova-plugin-screen-orientation": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {}
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.ts",
+      "!**/src/*",
+      "!**/src/**/*.module.ts",
+      "!**/src/shared/**/index.ts",
+      "!**/app/main.ts",
+      "!**/app/dev-landing-page/**",
+      "!**/assets/**",
+      "!**/src/environments/environment.*"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "lcov"
+    ],
+    "globals": {
+      "__TRANSFORM_HTML__": true,
+      "ts-jest": {
+        "tsConfigFile": "src/tsconfig.spec.json"
+      }
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "preset": "jest-preset-angular",
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts",
+    "testURL": "http://localhost",
+    "testPathIgnorePatterns": [
+      "<rootDir>/src/environments/environment.test.ts"
+    ],
+    "transform": {
+      "^.+\\.(ts|js|html)$": "<rootDir>/node_modules/jest-preset-angular/preprocessor.js",
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!@ionic|@ionic-native|ionic-angular|@angular)"
+    ],
+    "verbose": false
+  }
+}

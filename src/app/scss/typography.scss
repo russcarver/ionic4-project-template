@@ -1,0 +1,99 @@
+%default-text-color {
+  color: var(--ion-color-dark);
+}
+
+:root {
+  --paragraph__margin: 17px 0;
+}
+
+body {
+  @extend %default-text-color;
+}
+
+body,
+%paragraph,
+button {
+  font-size: var(--font-size__paragraph);
+}
+
+%heading-1,
+%heading-3,
+%heading-4 {
+  text-transform: uppercase;
+}
+
+%heading-1,
+%heading-3 {
+  text-transform: uppercase;
+}
+
+%heading-2,
+%heading-3,
+%heading-4 {
+  line-height: 1.1;
+}
+
+%heading-1 {
+  font-size: var(--font-size__heading1);
+  line-height: 1.3;
+}
+
+%heading-2 {
+  font-size: var(--font-size__heading2);
+  font-weight: var(--font-weight__regular);
+}
+
+%heading-3 {
+  font-size: var(--font-size__heading3);
+  margin-bottom: 20px;
+}
+
+%heading-4 {
+  font-size: var(--font-size__heading4);
+  font-weight: var(--font-weight__bold);
+}
+
+h1 {
+  @extend %heading-1;
+}
+
+h2 {
+  @extend %heading-2;
+}
+
+h3 {
+  @extend %heading-3;
+}
+
+h4 {
+  @extend %heading-4;
+}
+
+%paragraph {
+  margin: var(--paragraph__margin);
+}
+
+%paragraph-small {
+  @extend %paragraph;
+  font-size: var(--font-size__paragraph-small);
+}
+
+p {
+  @extend %paragraph;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 6px;
+  padding-left: 1em;
+  text-indent: -.7em;
+
+  &::before {
+    content: "• ";
+  }
+}

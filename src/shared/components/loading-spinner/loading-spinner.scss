@@ -1,0 +1,24 @@
+.loading-spinner {
+  // Themes
+  &-secondary {
+    background-color: var(--ion-color-secondary);
+  }
+
+  // General styles. Add theme here if needed.
+  &-secondary {
+    opacity: 0.5;
+
+    & .loading-wrapper {
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    &__container {
+      max-width: 80px;
+
+      &_icon {
+        width: var(--width-full);
+      }
+    }
+  }
+}

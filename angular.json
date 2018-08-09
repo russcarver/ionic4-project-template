@@ -1,0 +1,215 @@
+{
+  "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
+  "version": 1,
+  "defaultProject": "app",
+  "projects": {
+    "app": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "cmp",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "progress": false,
+            "outputPath": "www",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/@ionic/angular/dist/ionic/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              {
+                "input": "src/theme/variables.scss"
+              },
+              {
+                "input": "src/global.scss"
+              }
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "dev": {
+              "aot": false,
+              "buildOptimizer": false,
+              "extractCss": false,
+              "extractLicenses": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "namedChunks": true,
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "vendorChunk": false
+            },
+            "production": {
+              "aot": true,
+              "buildOptimizer": true,
+              "extractCss": true,
+              "extractLicenses": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "namedChunks": false,
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "vendorChunk": false
+            },
+            "test": {
+              "aot": true,
+              // "buildOptimizer,": false,
+              "extractCss": true,
+              "extractLicenses": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.test.ts"
+                }
+              ],
+              "namedChunks": false,
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "vendorChunk": false
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "app:build"
+          },
+          "configurations": {
+            "dev": {
+              "browserTarget": "app:build:dev"
+            },
+            "production": {
+              "browserTarget": "app:build:production"
+            },
+            "test": {
+              "browserTarget": "app:build:test"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tslintConfig": "tslint.json",
+            "files": [
+              "src/**/*.ts"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "src/**.*.d.ts",
+              "src/jestGlobalMocks.ts",
+              "src/setupJest.ts",
+              "src/test-base.ts"
+            ],
+            "tsConfig": [
+              "src/tsconfig.app.json"
+            ]
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/ng-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "app:build"
+          },
+          "configurations": {
+            "dev": {
+              "browserTarget": "app:build:dev"
+            },
+            "production": {
+              "browserTarget": "app:build:production"
+            },
+            "test": {
+              "browserTarget": "app:build:test"
+            }
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/ng-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "app:ionic-cordova-build",
+            "devServerTarget": "app:serve"
+          },
+          "configurations": {
+            "dev": {
+              "cordovaBuildTarget": "app:ionic-cordova-build:dev",
+              "devServerTarget": "app:serve:dev"
+            },
+            "production": {
+              "cordovaBuildTarget": "app:ionic-cordova-build:production",
+              "devServerTarget": "app:serve:production"
+            },
+            "test": {
+              "cordovaBuildTarget": "app:ionic-cordova-build:test",
+              "devServerTarget": "app:serve:test"
+            }
+          }
+        }
+      }
+    },
+    "app-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "app:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@ionic/schematics-angular",
+    "packageManager": "npm"
+  },
+  "schematics": {
+    "@ionic/schematics-angular:component": {
+      "styleext": "scss"
+    },
+    "@ionic/schematics-angular:page": {
+      "styleext": "scss"
+    }
+  }
+}

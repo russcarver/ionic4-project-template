@@ -1,0 +1,13 @@
+@mixin ios {
+  .platform-ios & {
+    @content;
+  }
+}
+
+@mixin android($versions: ['']) {
+  @each $version in $versions {
+    .platform-android#{$version} & {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+cmp-header-back-button,
+.header-back-button {
+  z-index: var(--z__above-all);
+
+  &__btn {
+    font-size: 1.6rem;
+    padding: 0 0.9em;
+    width: 22px;
+
+    @include ios {
+      margin-top: -4px; // iOS toolbar will push it down
+      top: 5px;
+    }
+
+    @include android {
+      font-size: 1.8rem;
+    }
+
+    &,
+    &.activated {
+      @extend .btn__transparent;
+      box-shadow: none;
+    }
+
+    .disabled & {
+      @extend button[disabled] !optional;
+    }
+  }
+
+}
