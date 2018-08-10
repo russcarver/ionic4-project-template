@@ -38,7 +38,6 @@
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
         <splash density="land-mdpi" src="resources/android/splash/drawable-land-mdpi-screen.png" />
-        <resource-file src="resources/android/values/values__styles.xml" target="res/values/values__styles.xml" />
         <hook src="scripts/hooks/after_platform_add/android-configure.js" type="after_platform_add" />
     </platform>
     <platform name="ios">

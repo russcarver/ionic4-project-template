@@ -3,12 +3,11 @@
 // Configure Xcode project
 module.exports = function(context) {
 
-  const iPhoneDeveloperCertOrganizationalUnit = '12345678'; // Your keychain certificate ID (can be found in Keychain Access under My Certificates)
   const entitlements = 'E3F614351F06D7C50029FBE3'; // From /platforms/ios/App.xcodeproj/project.pbxproj
   const xcode = require('xcode');
   const fs = require('fs');
   const path = require('path');
-  const utilities = require('../../hook-utilities');
+  const utilities = require('../../utilities');
   const swift = require('./swift-support');
   const pods = require('./pod-install');
 
@@ -16,6 +15,7 @@ module.exports = function(context) {
   console.log(`Environment = ${env}`);
   const config = getEnvConfig(env);
   // const isBuildServer = !!process.env.APP_BUILD_SERVER; // Export this env variable on your build server (set to true)
+  const isBuildServer = false;
 
   const bundleId = config.bundleId;
   const projectName = config.projectName;
@@ -130,6 +130,7 @@ module.exports = function(context) {
 
 function getEnvConfig(env) {
 
+  const iPhoneDeveloperCertOrganizationalUnit = '95CD57BUHN'; // Your keychain certificate ID (can be found in Keychain Access under My Certificates)
   let config = {};
 
   config.projectName = process.env[`npm_package_config_app_name_${env}`];
@@ -137,20 +138,20 @@ function getEnvConfig(env) {
   switch (env) {
     case 'prod':
       config.bundleId = 'com.russcarver.ionic4Template';
-      config.teamId = 'iPhoneDeveloperCertOrganizationalUnit';
-      config.provisioningProfile = 'lots-of-hex'; // The file name (minus '.mobileprovision') in /Users/<your.username>/Library/MobileDevice/Provisioning Profiles that matches your provisioning profile (see file contents)
+      config.teamId = iPhoneDeveloperCertOrganizationalUnit;
+      config.provisioningProfile = '9e94a270-9df6-48de-8892-f2ef72d78b8c'; // The file name (minus '.mobileprovision') in /Users/<your.username>/Library/MobileDevice/Provisioning Profiles that matches your provisioning profile (see file contents)
       config.provisioningProfileSpecifier = 'App - Distribution';
       break;
     case 'test':
-      config.bundleId = 'com.russcarver.ionic4Template-test';
-      config.teamId = 'iPhoneDeveloperCertOrganizationalUnit';
-      config.provisioningProfile = 'lots-of-hex';
+      config.bundleId = 'com.russcarver.ionic4Template';
+      config.teamId = iPhoneDeveloperCertOrganizationalUnit;
+      config.provisioningProfile = '9e94a270-9df6-48de-8892-f2ef72d78b8c';
       config.provisioningProfileSpecifier = 'App Test Region';
       break;
     case 'dev':
-      config.bundleId = 'com.russcarver.ionic4Template-dev';
-      config.teamId = 'iPhoneDeveloperCertOrganizationalUnit';
-      config.provisioningProfile = 'lots-of-hex';
+      config.bundleId = 'com.russcarver.ionic4Template';
+      config.teamId = iPhoneDeveloperCertOrganizationalUnit;
+      config.provisioningProfile = '9e94a270-9df6-48de-8892-f2ef72d78b8c';
       config.provisioningProfileSpecifier = 'App Dev Region';
       break;
     default:

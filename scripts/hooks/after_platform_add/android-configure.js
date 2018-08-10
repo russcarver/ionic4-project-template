@@ -34,10 +34,6 @@ if (platform === 'android' && fs.existsSync(projectPath)) {
   // utilities.copyFile(path.join('vendor', 'firebase', 'android', 'google-services.json'),
   //   path.join(projectPath, 'google-services.json'));
 
-  // Copy build-extras.gradle into platform folder
-  utilities.copyFile(path.join('scripts', 'build-extras.gradle'),
-    path.join(projectPath, 'build-extras.gradle'));
-
   // Configure android release signing properties
   if (env === 'prod') {
     console.log("Creating release signing property file...");

@@ -18,6 +18,7 @@ function install() {
   const projectRoot = path.join(__dirname, '..', '..', '..');
   const platformPath = path.join(projectRoot, 'platforms', 'ios');
 
+  execSync('pod init', { cwd: platformPath });
   execSync('pod install', { cwd: platformPath, stdio:[0,1,2] });
 
   console.log('==> Finished installing pods...');

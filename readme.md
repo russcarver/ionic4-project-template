@@ -68,7 +68,6 @@ We have a hook to do this, so manual configuration isn't necessary. However, for
    1. Launch Android Studio, choose **Tools > Android > SDK Manager**, and download one or more SDK platforms (for example, **Android 7.1.1 (Nougat)**). Note the path to the **Android SDK Location** on your computer (e.g., `/Users/jdoe/Library/Android/sdk`).
    1. In the same window, click the **SDK Tools** tab and install **Android Support Repository**, **Google Play Services**, **Google Repository**, and **Google Play APK Expansion library**.
    1. If you want to test in an emulator, choose **Tools > Android > AVD Manager** and create one or more virtual devices.
-    
 
 ### Install Plugins & Platforms
  - From the root of the project folder, type:
@@ -88,7 +87,7 @@ To build the project, type one of the following commands:
 ## Running the Project
  - To run the project in a browser, type: `npm start`.
  - To run the project in Xcode, build the project (see above), open the `.xcworkspace` file in `<proj-root>/platforms/ios/` into Xcode and then choose **Product > Run**.
- - To run the project on an Android device or simulator, type: `npm run run-md-dev` or `npm run run-md-test`. For a quick build that shouldn't be used for testing, type `npm run run-md-fast`.
+ - To run the project on an Android device or simulator, type: `npm run run-md-dev` or `npm run run-md-test`.
 
 ## Dev Landing Page
 - You can use the `src/app/dev-landing-page/get-page.ts` file to force the app to load a particular page in the dev environment. This can be useful for development and troubleshooting.
@@ -129,7 +128,7 @@ If you encounter the "White Screen of Death," try the following steps. Rebuild t
 If none of the above work, rebuild the Xcode project:
 
  1. Delete the contents of the `<project-root>/platforms` folder.
- 1. Run `npm run add-ios-dev` or `npm run add-ios-prod`
+ 1. Run `npm run add-ios-dev`, `npm run add-ios-test`, or `npm run add-ios-prod`
  1. Build your project as before
 
 ## Code Style
