@@ -130,7 +130,7 @@ module.exports = function(context) {
 
 function getEnvConfig(env) {
 
-  const iPhoneDeveloperCertOrganizationalUnit = '95CD57BUHN'; // Your keychain certificate ID (can be found in Keychain Access under My Certificates)
+  const iPhoneDeveloperCertOrganizationalUnit = '1234567'; // Your keychain certificate ID (can be found in Keychain Access under My Certificates)
   let config = {};
 
   config.projectName = process.env[`npm_package_config_app_name_${env}`];
@@ -139,19 +139,19 @@ function getEnvConfig(env) {
     case 'prod':
       config.bundleId = 'com.russcarver.ionic4Template';
       config.teamId = iPhoneDeveloperCertOrganizationalUnit;
-      config.provisioningProfile = '9e94a270-9df6-48de-8892-f2ef72d78b8c'; // The file name (minus '.mobileprovision') in /Users/<your.username>/Library/MobileDevice/Provisioning Profiles that matches your provisioning profile (see file contents)
+      config.provisioningProfile = 'lots-of-hex'; // The file name (minus '.mobileprovision') in /Users/<your.username>/Library/MobileDevice/Provisioning Profiles that matches your provisioning profile (see file contents)
       config.provisioningProfileSpecifier = 'App - Distribution';
       break;
     case 'test':
       config.bundleId = 'com.russcarver.ionic4Template';
       config.teamId = iPhoneDeveloperCertOrganizationalUnit;
-      config.provisioningProfile = '9e94a270-9df6-48de-8892-f2ef72d78b8c';
+      config.provisioningProfile = 'lots-of-hex';
       config.provisioningProfileSpecifier = 'App Test Region';
       break;
     case 'dev':
       config.bundleId = 'com.russcarver.ionic4Template';
       config.teamId = iPhoneDeveloperCertOrganizationalUnit;
-      config.provisioningProfile = '9e94a270-9df6-48de-8892-f2ef72d78b8c';
+      config.provisioningProfile = 'lots-of-hex';
       config.provisioningProfileSpecifier = 'App Dev Region';
       break;
     default:

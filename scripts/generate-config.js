@@ -32,8 +32,8 @@ switch (env) {
   break;
   case 'dev':
   case 'test':
-    newAppID_Android = NON_PROD_APP_ID + '_' + env; // Android platform won't add with dashes
-    newAppID_IOS = NON_PROD_APP_ID + '-' + env;
+    // newAppID_Android = NON_PROD_APP_ID + '_' + env; // Android platform won't add with dashes
+    // newAppID_IOS = NON_PROD_APP_ID + '-' + env;
   break;
   default:
     throw new Error(`NODE_ENV is invalid: ${env}. Should be 'dev', 'test' or 'prod'.`);
