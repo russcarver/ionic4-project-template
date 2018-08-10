@@ -78,7 +78,7 @@
             },
             "test": {
               "aot": true,
-              // "buildOptimizer,": false,
+              // "buildOptimizer,": false, // Known bug
               "extractCss": true,
               "extractLicenses": true,
               "fileReplacements": [

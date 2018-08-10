@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.russcarver.ionic4Template" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"
-        xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>Tournament-test</name>
+<widget id="com.russcarver.ionic4Template" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>App</name>
     <description>Ionic 4 Blank Starter Project</description>
     <author email="russcarverg@gmail.com" href="http//www.russcarver.com/">Russ Carver</author>
     <content src="index.html" />
