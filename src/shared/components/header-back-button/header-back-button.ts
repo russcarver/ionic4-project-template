@@ -19,6 +19,6 @@ export class HeaderBackButtonComponent {
       this.returnHandler();
       return;
     }
-    this.navCtrl.pop(); // TODO: Update to routing
+    this.navCtrl.pop(); // Not using Angular routing here as we may not know where we came from
   }
 }
