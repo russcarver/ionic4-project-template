@@ -16,16 +16,6 @@ unit test environment, a base class for HTTP requests, a custom loading spinner 
   1. Update npm to 6.2.0 `npm install npm@6.2.0`
   1. If wanted, set your default node version to 8.11.3 via `nvm alias default 8.11.3`
 
-### Install Ruby & CocoaPods
-To make sure you have the correct version of ruby and cocoapods, run the following:
-  1. `brew install gpg`
-  1. `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`
-  1. `\curl -sSL https://get.rvm.io | bash -s stable --ruby=2.4.1`
-  1. `gem install cocoapods -v 1.3.1`
-
-Then, install the xcodeproj ruby gem, run the following command from the project root:
-`[sudo] gem install xcodeproj`
-
 ### Ionic & Cordova Dev Usage
  - Since we may be bouncing between versions of Ionic & Cordova, we're not installing these globally. They're in the `package.json` file.
  - Update your `PATH` to include `./node_modules/bin` (`export PATH=./node_modules/.bin:$PATH`).

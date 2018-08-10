@@ -9,7 +9,6 @@ module.exports = function(context) {
   const path = require('path');
   const utilities = require('../../utilities');
   const swift = require('./swift-support');
-  const pods = require('./pod-install');
 
   const env = process.env.NODE_ENV || 'dev';
   console.log(`Environment = ${env}`);
@@ -114,9 +113,6 @@ module.exports = function(context) {
 
         // Write file to output
         fs.writeFileSync(infoPlistPath, fileText, 'utf8');
-
-        // Install pods
-        pods.install();
 
         console.log('...done configuring Xcode project.');
 
