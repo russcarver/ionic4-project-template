@@ -1,7 +1,8 @@
 # Ionic 4 project template
 This project will evolve as Angular and Ionic evolve, but for now it's a good scaffolding for dev, test and production environments with a Jest 
 unit test environment, a base class for HTTP requests, a custom loading spinner (just add your animated GIF to assets/img/loadingicon.gif), dynamic
- versioning, a cross-platform status bar, a custom toast controller, an HTML5 storage provider, some pipes, useful libraries and more!
+ versioning (plus a component!), a cross-platform status bar, a custom toast controller, an HTML5 storage provider, some pipes, useful libraries, 
+ platform configurations and more!
  
 ## Setup
 

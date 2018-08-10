@@ -16,6 +16,9 @@
     </feature>
     <platform name="android">
         <allow-intent href="market:*" />
+        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:allowBackup="false" tools:replace="android:allowBackup" xmlns:tools="http://schemas.android.com/tools" />
+        </edit-config>
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
@@ -35,6 +38,8 @@
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
         <splash density="land-mdpi" src="resources/android/splash/drawable-land-mdpi-screen.png" />
+        <resource-file src="resources/android/values/values__styles.xml" target="res/values/values__styles.xml" />
+        <hook src="scripts/hooks/after_platform_add/android-configure.js" type="after_platform_add" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -71,6 +76,10 @@
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
+        <hook src="scripts/hooks/after_platform_add/xcode-configure.js" type="after_platform_add" />
+        <hook src="scripts/hooks/after_build/update-Info-plist.js" type="after_build" />
+        <custom-preference buildType="debug" name="ios-XCBuildConfiguration-OTHER_CFLAGS" quote="none" value="-fstack-protector-strong" xcconfigEnforce="true" />
+        <custom-preference buildType="release" name="ios-XCBuildConfiguration-OTHER_CFLAGS" quote="none" value="-fstack-protector-strong" xcconfigEnforce="true" />
     </platform>
     <preference name="AllowInlineMediaPlayback" value="true" />
     <preference name="android-minSdkVersion" value="21" />
@@ -91,9 +100,11 @@
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="ScrollEnabled" value="false" />
-    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreenDelay" value="2000" />
+    <engine name="browser" />
     <engine name="android" spec="6.4.0" />
     <engine name="ios" spec="4.5.5" />
+    <plugin name="cordova-custom-config" spec="5.0.2" />
     <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-file" spec="6.0.1" />
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />

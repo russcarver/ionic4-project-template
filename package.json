@@ -16,9 +16,12 @@
     "add-md-dev": "npm run pre-script && npm run gen-config-dev && NODE_ENV=dev cordova platform add android@6.4.0 --nosave --nofetch",
     "add-md-prod": "npm run pre-script && npm run gen-config-prod && NODE_ENV=prod cordova platform add android@6.4.0 --nosave --nofetch",
     "add-md-test": "npm run pre-script && npm run gen-config-test && NODE_ENV=test cordova platform add android@6.4.0 --nosave --nofetch",
-    "build-dev": "npm run pre-script && NODE_ENV=dev ng build --configuration=dev",
-    "build-prod": "npm run pre-script && NODE_ENV=prod ng build --configuration=production",
-    "build-test": "npm run pre-script && NODE_ENV=test ng build --configuration=test",
+    "build-md-dev": "npm run pre-script && NODE_ENV=dev ionic cordova build android && ng build --configuration=dev",
+    "build-md-prod": "npm run pre-script && NODE_ENV=prod ionic cordova build android && ng build --configuration=production",
+    "build-md-test": "npm run pre-script && NODE_ENV=test ionic cordova build ios && ng build --configuration=test",
+    "build-ios-dev": "npm run pre-script && NODE_ENV=dev ionic cordova build android && ng build --configuration=dev",
+    "build-ios-prod": "npm run pre-script && NODE_ENV=prod ionic cordova build ios && ng build --configuration=production",
+    "build-ios-test": "npm run pre-script && NODE_ENV=test ionic cordova build ios && ng build --configuration=test",
     "clean-project": "rm -rf www/* && rm -rf plugins/* && rm -rf platforms/*",
     "e2e": "ng e2e",
     "gen-config-dev": "NODE_ENV=dev node ./scripts/generate-config.js && NODE_ENV=dev node ./scripts/generate-index.js",
@@ -62,6 +65,7 @@
     "@ionic/storage": "2.1.3",
     "cordova": "7.1.0",
     "cordova-android": "6.4.0",
+    "cordova-custom-config": "5.0.2",
     "cordova-ios": "4.5.5",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-file": "6.0.1",
@@ -126,6 +130,7 @@
   },
   "cordova": {
     "plugins": {
+      "cordova-custom-config": {},
       "cordova-plugin-device": {},
       "cordova-plugin-file": {},
       "cordova-plugin-inappbrowser": {},
@@ -139,8 +144,8 @@
     },
     "platforms": [
       "android",
-      "browser",
-      "ios"
+      "ios",
+      "browser"
     ]
   },
   "jest": {
