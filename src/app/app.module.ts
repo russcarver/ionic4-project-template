@@ -2,6 +2,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -41,6 +43,8 @@ export class AppErrorHandler implements ErrorHandler {
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Keyboard,
+    ScreenOrientation,
     SplashScreen,
     StatusBar
   ]
