@@ -3,7 +3,6 @@
     "node_modules/codelyzer",
     "node_modules/tslint-eslint-rules/dist/rules"
   ],
-  // "extends": ["angular-tslint-rules"],
   "rules": {
     //
     // Codelyzer
@@ -22,10 +21,8 @@
     "use-life-cycle-interface": true,
     "use-pipe-decorator": true,
     "use-pipe-transform-interface": true,
-    // "use-view-encapsulation": true, - TODO: Look to see if this is required.
 
     // Style
-    // "angular-whitespace": [true, "check-interpolation"],
     "component-class-suffix": [
       true,
       "Component",
@@ -157,8 +154,7 @@
       true,
       "allow-fast-null-checks"
     ],
-    // "no-unused-variable": true, -- Unfortunately this is not working correctly.
-    // https://github.com/palantir/tslint/issues/2470
+    "no-unused-variable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "radix": true,

@@ -4,6 +4,7 @@ import { of as observableOf, throwError, Observable } from 'rxjs';
 import { delay, retryWhen, switchMap, timeout } from 'rxjs/operators';
 
 import { envVariables } from 'environments/environment-variables.token';
+import { Environment } from 'environments/environment.model';
 import { isDefined, isUndefined } from 'lib/util';
 import { InjectorService } from 'shared/services/injector';
 
@@ -12,14 +13,14 @@ import { RequestAttribute, RequestSpec } from './models/request.model';
 const httpRetryDelay: number = 1500; // ms
 
 export abstract class RequestBaseClass {
-  private envVars: any;
+  private envVars: Environment;
   private http: HttpClient;
   private urlStart: string;
 
   protected constructor() {
     this.envVars = InjectorService.injector.get<any>(envVariables);
     this.http = InjectorService.injector.get(HttpClient);
-    this.urlStart = `${this.envVars.baseUrl}:${this.envVars.serverPort}`;
+    this.urlStart = `${this.envVars.servicesUrl}${this.envVars.servicesPath}`;
   }
 
   protected get(params: RequestSpec): Observable<any> {

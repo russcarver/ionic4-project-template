@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Platform } from 'ionic-angular';
 
 import { filter } from 'lodash';
 
@@ -14,7 +13,6 @@ export const StorageType: any = { // tslint:disable-line
 export class StorageService {
 
   public constructor(
-    private platform: Platform,
     private storage: Storage
   ) { }
 

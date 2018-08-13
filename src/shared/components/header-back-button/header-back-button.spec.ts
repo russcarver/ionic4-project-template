@@ -1,11 +1,12 @@
 import { async, inject } from '@angular/core/testing';
 import { NavController } from 'ionic-angular';
 
+import Spy = jasmine.Spy;
+
 import noop from 'lib/noop';
 import { NavControllerMock } from 'mocks';
 import { HeaderBackButtonComponent } from 'shared/components/header-back-button/header-back-button';
 import { beforeEachCompiler, FixturePayload } from 'test-base';
-import Spy = jasmine.Spy;
 
 let navCtrl: NavController;
 let testFixturePayload: FixturePayload<HeaderBackButtonComponent>;
