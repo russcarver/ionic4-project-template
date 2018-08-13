@@ -1,1 +1,9 @@
+cmp-home, .home {
+
+  &__content {
+    @extend %page-content;
+    padding: var(--page__padding);
+  }
+
+}
 
