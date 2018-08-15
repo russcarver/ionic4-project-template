@@ -17,7 +17,7 @@
     "no-forward-ref": true,
     "no-input-rename": true,
     "no-output-rename": true,
-    "no-unused-css": true, // Docs for this are missing.
+    // "no-unused-css": true, // Doesn't seem to be working with Angular6 and the 'styleUrls' array
     "use-life-cycle-interface": true,
     "use-pipe-decorator": true,
     "use-pipe-transform-interface": true,
