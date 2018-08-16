@@ -1,0 +1,7 @@
+:root {
+  --ios_status_bar_height: 20px;
+}
+
+html.ios ion-content {
+  top: var(--ios_status_bar_height); // Keep things below the iOS status bar
+}
