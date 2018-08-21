@@ -16,7 +16,7 @@ $mq__slim-tall-phone-portrait-width-max: ($mq__tall-phone-portrait-width-min - 1
 }
 
 @mixin small-landscape {
-  @media only screen and (max-width: $mq__iphone-5-portrait-width-max) and (orientation: landscape) {
+  @media only screen and (max-height: $mq__iphone-5-portrait-width-max) and (orientation: landscape) {
     @content;
   }
 }
@@ -28,7 +28,7 @@ $mq__slim-tall-phone-portrait-width-max: ($mq__tall-phone-portrait-width-min - 1
 }
 
 @mixin medium-min-landscape {
-  @media only screen and (min-width: $mq__iphone-6-7-8-X-portrait-width-min) and (orientation: landscape) {
+  @media only screen and (min-height: $mq__iphone-6-7-8-X-portrait-width-min) and (orientation: landscape) {
     @content;
   }
 }
@@ -40,7 +40,7 @@ $mq__slim-tall-phone-portrait-width-max: ($mq__tall-phone-portrait-width-min - 1
 }
 
 @mixin medium-landscape {
-  @media only screen and (min-width: $mq__iphone-6-7-8-X-portrait-width-min) and (max-width: $mq__iphone-6-7-8-portrait-width-max) and (orientation: landscape) {
+  @media only screen and (min-height: $mq__iphone-6-7-8-X-portrait-width-min) and (max-width: $mq__iphone-6-7-8-portrait-width-max) and (orientation: landscape) {
     @content;
   }
 }
@@ -52,7 +52,7 @@ $mq__slim-tall-phone-portrait-width-max: ($mq__tall-phone-portrait-width-min - 1
 }
 
 @mixin large-landscape {
-  @media only screen and (min-width: $mq__iphone-6-7-8-plus-portrait-width-min) and (orientation: landscape) {
+  @media only screen and (min-height: $mq__iphone-6-7-8-plus-portrait-width-min) and (orientation: landscape) {
     @content;
   }
 }
@@ -65,7 +65,7 @@ $mq__slim-tall-phone-portrait-width-max: ($mq__tall-phone-portrait-width-min - 1
 }
 
 @mixin slim-tall-landscape {
-  @media only screen and (max-width: $mq__iphone-5-portrait-width-max) and (max-height: $mq__slim-tall-phone-portrait-width-max) and (orientation: landscape) {
+  @media only screen and (max-height: $mq__iphone-5-portrait-width-max) and (max-width: $mq__slim-tall-phone-portrait-width-max) and (orientation: landscape) {
     @content;
   }
 }
@@ -77,7 +77,7 @@ $mq__slim-tall-phone-portrait-width-max: ($mq__tall-phone-portrait-width-min - 1
 }
 
 @mixin tall-landscape {
-  @media only screen and (min-height: $mq__tall-phone-portrait-width-min) and (orientation: landscape) {
+  @media only screen and (min-width: $mq__tall-phone-portrait-width-min) and (orientation: landscape) {
     @content;
   }
 }
@@ -90,7 +90,7 @@ $mq__slim-tall-phone-portrait-width-max: ($mq__tall-phone-portrait-width-min - 1
 }
 
 @mixin ipad-landscape {
-  @media only screen and (min-width: $mq__ipad-portrait-width-min) and (orientation: landscape) {
+  @media only screen and (min-height: $mq__ipad-portrait-width-min) and (orientation: landscape) {
     @content;
   }
 }
