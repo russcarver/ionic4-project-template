@@ -1,97 +1,96 @@
-:root {
-  --mq__iphone-5-min: 320px;
-  --mq__iphone-5-max: (var(--mq__iphone-6-7-8-X-min) - 1px);
-  --mq__iphone-6-7-8-plus-min: 412px; // iphone is 414, but Nexus 6p is 412
-  --mq__iphone-6-7-8-max: (var(--mq__iphone-6-7-8-plus-min) - 1px);
-  --mq__iphone-6-7-8-X-min: 375px;
-  --mq__tall-phone-min: 740px; // (currently samsung galaxy S8/S8+, Note 8 and iPhone X (812px) as of 1/26/2018
-  --mq__slim-tall-phone-max: (var(--mq__tall-phone-min) - 1px);
-  --mq__ipad-min: 768px;
-}
+// Media queries do not currently play nice with CSS 4 variables
+
+$mq__iphone-5-portrait-width-min: 320px;
+$mq__iphone-6-7-8-X-portrait-width-min: 375px;
+$mq__iphone-5-portrait-width-max: ($mq__iphone-6-7-8-X-portrait-width-min - 1px);
+$mq__iphone-6-7-8-plus-portrait-width-min: 412px; // iphone is 414, but Nexus 6p is 412
+$mq__iphone-6-7-8-portrait-width-max: ($mq__iphone-6-7-8-plus-portrait-width-min - 1px);
+$mq__tall-phone-portrait-width-min: 740px; // (currently samsung galaxy S8/S8+, Note 8 and iPhone X (812px) as of 1/26/2018
+$mq__ipad-portrait-width-min: 768px;
+$mq__slim-tall-phone-portrait-width-max: ($mq__tall-phone-portrait-width-min - 1px);
 
 @mixin small {
-  @media only screen and (max-width: var(--mq__iphone-5-max)) and (orientation: portrait) {
+  @media only screen and (max-width: $mq__iphone-5-portrait-width-max) and (orientation: portrait) {
     @content;
   }
 }
 
 @mixin small-landscape {
-  @media only screen and (max-width: var(--mq__iphone-5-max)) and (orientation: landscape) {
+  @media only screen and (max-width: $mq__iphone-5-portrait-width-max) and (orientation: landscape) {
     @content;
   }
 }
 
 @mixin medium-min {
-  @media only screen and (min-width: var(--mq__iphone-6-7-8-X-min)) and (orientation: portrait) {
+  @media only screen and (min-width: $mq__iphone-6-7-8-X-portrait-width-min) and (orientation: portrait) {
     @content;
   }
 }
 
-
 @mixin medium-min-landscape {
-  @media only screen and (min-width: var(--mq__iphone-6-7-8-X-min)) and (orientation: landscape) {
+  @media only screen and (min-width: $mq__iphone-6-7-8-X-portrait-width-min) and (orientation: landscape) {
     @content;
   }
 }
 
 @mixin medium {
-  @media only screen and (min-width: var(--mq__iphone-6-7-8-X-min)) and (max-width: var(--mq__iphone-6-7-8-max)) and (orientation: portrait) {
+  @media only screen and (min-width: $mq__iphone-6-7-8-X-portrait-width-min) and (max-width: $mq__iphone-6-7-8-portrait-width-max) and (orientation: portrait) {
     @content;
   }
 }
 
 @mixin medium-landscape {
-  @media only screen and (min-width: var(--mq__iphone-6-7-8-X-min)) and (max-width: var(--mq__iphone-6-7-8-max)) and (orientation: landscape) {
+  @media only screen and (min-width: $mq__iphone-6-7-8-X-portrait-width-min) and (max-width: $mq__iphone-6-7-8-portrait-width-max) and (orientation: landscape) {
     @content;
   }
 }
 
 @mixin large {
-  @media only screen and (min-width: var(--mq__iphone-6-7-8-plus-min)) and (orientation: portrait) {
+  @media only screen and (min-width: $mq__iphone-6-7-8-plus-portrait-width-min) and (orientation: portrait) {
     @content;
   }
 }
 
 @mixin large-landscape {
-  @media only screen and (min-width: var(--mq__iphone-6-7-8-plus-min)) and (orientation: landscape) {
+  @media only screen and (min-width: $mq__iphone-6-7-8-plus-portrait-width-min) and (orientation: landscape) {
     @content;
   }
 }
 
 // Added for slim but taller devices
 @mixin slim-tall {
-  @media only screen and (max-width: var(--mq__iphone-5-max)) and (max-height: var(--mq__slim-tall-phone-max)) and (orientation: portrait) {
+  @media only screen and (max-width: $mq__iphone-5-portrait-width-max) and (max-height: $mq__slim-tall-phone-portrait-width-max) and (orientation: portrait) {
     @content;
   }
 }
 
 @mixin slim-tall-landscape {
-  @media only screen and (max-width: var(--mq__iphone-5-max)) and (max-height: var(--mq__slim-tall-phone-max)) and (orientation: landscape) {
+  @media only screen and (max-width: $mq__iphone-5-portrait-width-max) and (max-height: $mq__slim-tall-phone-portrait-width-max) and (orientation: landscape) {
     @content;
   }
 }
 
 @mixin tall {
-  @media only screen and (min-height: var(--mq__tall-phone-min)) and (orientation: portrait) {
+  @media only screen and (min-height: $mq__tall-phone-portrait-width-min) and (orientation: portrait) {
     @content;
   }
 }
 
 @mixin tall-landscape {
-  @media only screen and (min-height: var(--mq__tall-phone-min)) and (orientation: landscape) {
+  @media only screen and (min-height: $mq__tall-phone-portrait-width-min) and (orientation: landscape) {
     @content;
   }
 }
 
 // iPads
 @mixin ipad {
-  @media only screen and (min-width: var(--mq__ipad-min)) and (orientation: portrait) {
+  @media only screen and (min-width: $mq__ipad-portrait-width-min) and (orientation: portrait) {
     @content;
   }
 }
 
 @mixin ipad-landscape {
-  @media only screen and (min-width: var(--mq__ipad-min)) and (orientation: landscape) {
+  @media only screen and (min-width: $mq__ipad-portrait-width-min) and (orientation: landscape) {
     @content;
   }
 }
