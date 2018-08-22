@@ -128,7 +128,11 @@
     "app_baseurl_prod": "http://prod.server:8080",
     "app_baseurl_test": "http://test.server:8080",
     "app_baseurl_dev": "http://dev.server:8080",
-    "google_play_services_version": "11.0.4"
+    "google_play_services_version": "11.0.4",
+    "release_keystore_file": "my-release-key.jks",
+    "release_keystore_password": "password",
+    "release_key_alias": "my-alias",
+    "release_key_password": "password"
   },
   "cordova": {
     "plugins": {

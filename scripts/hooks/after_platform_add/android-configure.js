@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 // Configure Android project
+// For production, be sure to create your release key first via https://ionicframework.com/docs/intro/deploying/ and put the relevant info into
+// package.json config section.
 
 const fs = require('fs');
 const replace = require('replace-in-file');
@@ -12,10 +14,11 @@ const EOL = os.EOL;
 
 const env = process.env.NODE_ENV || 'dev';
 
-const keyStoreFile = process.env.RELEASE_KEYSTORE_FILE;
-const keyStorePassword = process.env.RELEASE_KEYSTORE_PASSWORD;
-const keyAlias = process.env.RELEASE_KEY_ALIAS;
-const keyPassword = process.env.RELEASE_KEY_PASSWORD;
+// From package.json config section
+const keyStoreFile = process.env.npm_package_config_release_keystore_file;
+const keyStorePassword = process.env.npm_package_config_release_keystore_password;
+const keyAlias = process.env.npm_package_config_release_key_alias;
+const keyPassword = process.env.npm_package_config_release_key_password;
 
 const googlePlayServicesVersion = process.env.npm_package_config_google_play_services_version;
 const projectRoot = path.join(__dirname, '..', '..', '..');
@@ -30,14 +33,12 @@ if (platform === 'android' && fs.existsSync(projectPath)) {
 
   setGooglePlayServicesVersion(googlePlayServicesVersion);
 
-  // Copy firebase config to platform folder
-  // utilities.copyFile(path.join('vendor', 'firebase', 'android', 'google-services.json'),
-  //   path.join(projectPath, 'google-services.json'));
-
   // Configure android release signing properties
   if (env === 'prod') {
     console.log("Creating release signing property file...");
-    createReleaseSigningProptertyFile();
+    createReleaseSigningPropertyFile();
+    utilities.copyFile('my-release-key.jks',
+      path.join(projectPath, 'my-release-key.jks'));
   }
 
   // Configure android debug signing properties
@@ -62,7 +63,7 @@ if (platform === 'android' && fs.existsSync(projectPath)) {
 
 }
 
-function createReleaseSigningProptertyFile() {
+function createReleaseSigningPropertyFile() {
 
   let logger = fs.createWriteStream(path.join(projectPath, 'release-signing.properties'), {
     encoding: 'utf8',
@@ -91,5 +92,4 @@ function setGooglePlayServicesVersion(version) {
   // Update project.properties to use global Google Play Services version
   options.from = /:11.0.+/g;
   replace.sync(options);
-
 }
