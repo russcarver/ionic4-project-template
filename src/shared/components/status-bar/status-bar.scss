@@ -1,14 +1,9 @@
-cmp-status-bar,
-.status-bar {
-  --status-bar__height: 20px; // If updated, make sure to update ts variable `StatusBarComponent.height` in status-bar.ts
-  --status-bar__background-color: var(--ion-color-dark);
-  --status-bar__opacity: 0.45;
-
+cmp-status-bar {
   @include ios {
-    background-color: var(--status-bar__background-color);
-    height: var(--status-bar__height);
+    background-color: var(--ion-color-dark);
+    height: var(--ios_status_bar_height);
     width: 100%;
-    opacity: var(--status-bar__opacity);
+    opacity: 0.45;
     position: absolute;
     top: 0;
     z-index: var(--z__below-modal);
