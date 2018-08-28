@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { IonicModule } from 'ionic-angular';
+import { IonicModule } from '@ionic/angular';
 
 import { HeaderBackButtonComponent } from 'shared/components/header-back-button/header-back-button';
 import { LoadingSpinnerComponent } from 'shared/components/loading-spinner/loading-spinner';
@@ -17,7 +18,7 @@ const components: any = [
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [IonicModule, PipesModule]
+  imports: [CommonModule, IonicModule, PipesModule]
 })
 
 export class ComponentsModule { }

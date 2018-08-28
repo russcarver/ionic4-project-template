@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Loading, LoadingController } from 'ionic-angular';
+import { LoadingController } from '@ionic/angular';
 
 import { Observable, Subject } from 'rxjs';
 
@@ -18,7 +18,7 @@ let spinnerDisplayPending: boolean = false;
   template: `<div></div>`
 })
 export class LoadingSpinnerComponent {
-  private spinner: Loading;
+  private spinner: any; // TODO: Update to actual type (used to be "Loading"
   private spinnerPendingSubject: Subject<boolean> = new Subject<boolean>();
 
   /**

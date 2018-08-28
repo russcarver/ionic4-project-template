@@ -1,25 +1,23 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { inject, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
 
-import SpyObj = jasmine.SpyObj;
-
 import { PlatformMock } from 'mocks';
 import { createSpyObj } from 'test-base';
 
-import { AppComponent } from './app.component';
 import Spy = jasmine.Spy;
+import SpyObj = jasmine.SpyObj;
+
+import { AppComponent } from './app.component';
 
 // tslint:disable:no-string-literal
 describe('AppComponent', () => {
 
   let fixture: ComponentFixture<AppComponent>;
   let instance: AppComponent;
-  let keyboardSpy: SpyObj<any>;
   let platform: Platform;
   let splashScreenSpy: SpyObj<any>;
   let statusBarSpy: SpyObj<any>;
@@ -27,7 +25,6 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     splashScreenSpy = createSpyObj('SplashScreen', ['hide']);
     statusBarSpy = createSpyObj('StatusBar', ['styleDefault']);
-    keyboardSpy = createSpyObj('Keyboard', ['disableScroll']);
 
     TestBed.configureTestingModule({
       declarations: [AppComponent],
@@ -35,7 +32,6 @@ describe('AppComponent', () => {
         { provide: Platform, useClass: PlatformMock },
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: StatusBar, useValue: statusBarSpy },
-        { provide: Keyboard, useValue: keyboardSpy },
         ScreenOrientation
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -64,7 +60,6 @@ describe('AppComponent', () => {
 
     expect(splashScreenSpy.hide).toHaveBeenCalled();
     expect(statusBarSpy.styleDefault).toHaveBeenCalled();
-    expect(keyboardSpy.disableScroll).toHaveBeenCalledWith(true);
     expect(screenOrientationSpy).toHaveBeenCalledWith('portrait-primary');
   });
 

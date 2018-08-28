@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, Injector, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { App, Config, DomController, Form, Keyboard, MenuController, ModalController, NavController, Platform } from 'ionic-angular';
+import { App, Config, DomController, MenuController, ModalController, NavController, Platform } from '@ionic/angular';
 
 import { AppErrorHandler } from 'app/app.module';
 import { EnvironmentsModule } from 'environments/environment-variables.module';
@@ -45,18 +45,16 @@ export function beforeEachCompiler(
   if (overrides.length) {
     overrides.forEach((override: TestBedOverride<any>): void => {
       switch (override.type) {
-        case TestBedOverrideType.PROVIDER:
-          {
-            const data: TestBedProviderOverride = override.data as TestBedProviderOverride;
-            const provider: any = data.providerFactory ? data.providerFactory : data.providerValue;
-            configuredModule = configuredModule.overrideProvider(data.token, provider);
-          }
+        case TestBedOverrideType.PROVIDER: {
+          const data: TestBedProviderOverride = override.data as TestBedProviderOverride;
+          const provider: any = data.providerFactory ? data.providerFactory : data.providerValue;
+          configuredModule = configuredModule.overrideProvider(data.token, provider);
+        }
           break;
-        case TestBedOverrideType.COMPONENT:
-          {
-            const data: TestBedComponentOverride = override.data as TestBedComponentOverride;
-            configuredModule = configuredModule.overrideComponent(data.token, data.override);
-          }
+        case TestBedOverrideType.COMPONENT: {
+          const data: TestBedComponentOverride = override.data as TestBedComponentOverride;
+          configuredModule = configuredModule.overrideComponent(data.token, data.override);
+        }
           break;
         default:
           throw new Error(`Invalid override: ${override.type}`);
@@ -81,7 +79,7 @@ export function beforeEachProviderCompiler(providers: Array<any>, imports?: Arra
 function configureIonicTestingModule(mockProviders: Array<any> = [], imports: Array<any> = [], declaractions: Array<any> = []): typeof TestBed {
   mockProviders = [
     { provide: ErrorHandler, useClass: AppErrorHandler },
-    App, Form, Injector, Keyboard, DomController, MenuController, NavController, ModalController,
+    App, Injector, DomController, MenuController, NavController, ModalController,
     { provide: StorageService, useClass: StorageServiceMock },
     { provide: Platform, useClass: PlatformMock },
     { provide: Config, useClass: ConfigMock }

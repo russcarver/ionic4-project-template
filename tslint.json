@@ -32,8 +32,7 @@
       true,
       "element",
       [
-        "cmp",
-        "page"
+        "cmp"
       ],
       "kebab-case"
     ],
@@ -81,7 +80,6 @@
         ]
       }
     ],
-    "no-import-side-effect": [ true, { "ignore-pattern": "/jasmine/" } ],
     "no-var-requires": true,
     "only-arrow-functions": [
       true,
@@ -154,7 +152,6 @@
       true,
       "allow-fast-null-checks"
     ],
-    "no-unused-variable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "radix": true,
@@ -180,7 +177,7 @@
       true,
       400
     ],
-    "no-default-export": true,
+    "no-default-export": false,
     "no-duplicate-imports": true,
     "no-require-imports": true,
     "object-literal-sort-keys": true,
@@ -231,8 +228,7 @@
     "ordered-imports": [
       true,
       {
-        "import-sources-order": "lowercase-first",
-        "named-imports-order": "lowercase-first"
+        "import-sources-order": "lowercase-last"
       }
     ],
     "prefer-method-signature": true,
@@ -277,7 +273,6 @@
       "check-separator",
       "check-rest-spread",
       "check-type",
-      "check-typecast",
       "check-type-operator",
       "check-preblock"
     ]

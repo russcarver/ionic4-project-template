@@ -1,5 +1,6 @@
 import { async, inject } from '@angular/core/testing';
-import { ToastController, ToastOptions } from 'ionic-angular';
+import { ToastController } from '@ionic/angular';
+import { ToastOptions } from '@ionic/angular/dist/types/components/toast/toast-interface';
 
 import { has } from 'lodash';
 

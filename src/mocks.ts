@@ -1,4 +1,4 @@
-import { of, timer, Observable } from 'rxjs';
+import { Observable, of, timer } from 'rxjs';
 
 import { createSpyObj } from 'test-base';
 
@@ -312,16 +312,13 @@ export class ViewControllerMock {
   // HACK- https://github.com/stonelasley/ionic-mocks/issues/29
   private static navController(): any {
     const instance: any = createSpyObj('NavController', [
-      'goToRoot',
+      'navigateBack',
+      'navigateForward',
+      'navigateRoot',
       'initPane',
       'paneChanged',
-      'push',
       'insert',
       'insertPage',
-      'pop',
-      'popTo',
-      'popToRoot',
-      'popAll',
       'remove',
       'removeView',
       'setRoot',
@@ -359,7 +356,7 @@ export class ViewControllerMock {
       'viewWillUnload'
     ]);
 
-    instance.goToRoot.and.returnValue(Promise.resolve());
+    instance.navigateRoot.and.returnValue(Promise.resolve());
     instance.initPane.and.returnValue(1);
 
     // tslint:disable:no-string-literal
@@ -367,13 +364,10 @@ export class ViewControllerMock {
     instance['rootParams'] = {};
     // tslint:enable:no-string-literal
 
-    instance.push.and.returnValue(Promise.resolve());
+    instance.navigateForward.and.returnValue(Promise.resolve());
     instance.insert.and.returnValue(Promise.resolve());
     instance.insertPage.and.returnValue(Promise.resolve());
-    instance.pop.and.returnValue(Promise.resolve());
-    instance.popTo.and.returnValue(Promise.resolve());
-    instance.popToRoot.and.returnValue(Promise.resolve());
-    instance.popAll.and.returnValue(Promise.resolve());
+    instance.navigateBack.and.returnValue(Promise.resolve());
     instance.remove.and.returnValue(Promise.resolve());
     instance.removeView.and.returnValue(Promise.resolve());
     instance.setRoot.and.returnValue(Promise.resolve());
@@ -493,16 +487,13 @@ export class NavControllerMock {
   public static instance(): any {
 
     const instance: any = createSpyObj('NavController', [
-      'goToRoot',
+      'navigateBack',
+      'navigateForward',
+      'navigateRoot',
       'initPane',
       'paneChanged',
-      'push',
       'insert',
       'insertPage',
-      'pop',
-      'popTo',
-      'popToRoot',
-      'popAll',
       'remove',
       'removeView',
       'setRoot',
@@ -540,7 +531,7 @@ export class NavControllerMock {
       'viewWillUnload'
     ]);
 
-    instance.goToRoot.and.returnValue(Promise.resolve());
+    instance.navigateRoot.and.returnValue(Promise.resolve());
     instance.initPane.and.returnValue(1);
 
     // tslint:disable:no-string-literal
@@ -548,13 +539,10 @@ export class NavControllerMock {
     instance['rootParams'] = {};
     // tslint:enable:no-string-literal
 
-    instance.push.and.returnValue(Promise.resolve());
+    instance.navigateForward.and.returnValue(Promise.resolve());
     instance.insert.and.returnValue(Promise.resolve());
     instance.insertPage.and.returnValue(Promise.resolve());
-    instance.pop.and.returnValue(Promise.resolve());
-    instance.popTo.and.returnValue(Promise.resolve());
-    instance.popToRoot.and.returnValue(Promise.resolve());
-    instance.popAll.and.returnValue(Promise.resolve());
+    instance.navigateBack.and.returnValue(Promise.resolve());
     instance.remove.and.returnValue(Promise.resolve());
     instance.removeView.and.returnValue(Promise.resolve());
     instance.setRoot.and.returnValue(Promise.resolve());

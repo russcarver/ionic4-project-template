@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Toast, ToastController, ToastOptions } from 'ionic-angular';
+import { ToastController } from '@ionic/angular';
+import { ToastOptions } from '@ionic/angular/dist/types/components/toast/toast-interface';
 
 import { unset } from 'lodash';
 
@@ -13,7 +14,7 @@ interface ToastStatusOptions {
 export class ToastService {
   private static readonly defaultDuration: number = 3000;
 // The use of a Toast array is to display multiple toasts without them overlapping.  As one toast is dismissed, the other toast in the array will be displayed
-  private toasts: Toast[] = [];
+  private toasts: any[] = []; // TODO: Update to actual type (used to be Toast)
 
   public constructor(private toastCtrl: ToastController) { }
 
@@ -21,7 +22,7 @@ export class ToastService {
     if (options.duration === 0) {
       unset(options, 'duration');
     }
-    const toast: Toast = this.toastCtrl.create(options);
+    const toast: any = this.toastCtrl.create(options); // TODO: Update to actual type (used to be Toast)
 
     toast.onDidDismiss(() => {
       this.toasts.shift();
@@ -98,7 +99,7 @@ export class ToastService {
     });
   }
 
-  private createToastClickHandler(toast: Toast): void {
+  private createToastClickHandler(toast: any): void { // TODO: Update to actual type (used to be Toast)
     const container: HTMLElement = <HTMLElement> document.querySelector('.toast-container');
     const listener: EventListenerOrEventListenerObject = (me: MouseEvent): void => {
       container.removeEventListener('click', listener, true);

@@ -1,14 +1,12 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
-import { of as observableOf } from 'rxjs/observable/of';
-import { _throw } from 'rxjs/observable/throw';
+import { Observable, of, throwError } from 'rxjs';
 import { delay, retryWhen, switchMap, timeout } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
 
 import { envVariables } from 'environments/environment-variables.token';
 import { isDefined, isUndefined } from 'lib/util';
+import { InjectorService } from 'shared/services/injector';
 
-import { InjectorService } from '../injector.service';
 import { RequestAttribute, RequestSpec } from './models/request.model';
 
 const httpRetryDelay: number = 1500; // ms
@@ -197,7 +195,7 @@ export abstract class RequestBaseClass {
 
   private retryCall(errors: Observable<any>): Observable<any> {
     return errors.pipe(
-      switchMap((error: any) => (error.status >= 400) ? _throw(error) : observableOf(error)), // Don't retry for errors >= 400
+      switchMap((error: any) => (error.status >= 400) ? throwError(error) : of(error)), // Don't retry for errors >= 400
       delay(httpRetryDelay)
     );
   }

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { InjectorService } from 'shared/services/injector';
@@ -10,6 +11,7 @@ import { PipesModule } from './pipes/pipes.module';
 @NgModule({
   declarations: [],
   imports: [
+    CommonModule,
     ComponentsModule,
     PipesModule
   ],

@@ -1,5 +1,5 @@
 import { async, fakeAsync, tick } from '@angular/core/testing';
-import { LoadingController } from 'ionic-angular';
+import { LoadingController } from '@ionic/angular';
 
 import createSpy = jasmine.createSpy;
 import Spy = jasmine.Spy;
