@@ -7,12 +7,18 @@
 }
 
 %page-content {
+  @include ios {
+    top: var(--ios-status-bar-height);
+  }
   .scroll-content {
     @extend %default-page-content-padding;
   }
 }
 
 %page-content-form {
+  @include ios {
+    top: var(--ios-status-bar-height);
+  }
   .scroll-content {
     @extend %form-page-content-padding;
   }
