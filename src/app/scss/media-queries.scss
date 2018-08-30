@@ -3,12 +3,12 @@
 $mq__iphone-5-portrait-width-min: 320px;
 $mq__iphone-6-7-8-X-portrait-width-min: 360px; // iPhone 5 is 375 but GalaxyS5 is 360
 $mq__iphone-6-7-8-plus-portrait-width-min: 411px; // iphone is 414, but Nexus 6p is 412 and Pixel 2 is 411
-$mq__tall-phone-portrait-width-min: 740px; // currently Galaxy S8/S8+, Note 8 and iPhone X (812px)
+$mq__tall-phone-portrait-height-min: 740px; // currently Galaxy S8/S8+, Note 8 and iPhone X (812px)
 $mq__ipad-portrait-width-min: 768px;
 
 $mq__iphone-5-portrait-width-max: ($mq__iphone-6-7-8-X-portrait-width-min - 1px);
 $mq__iphone-6-7-8-portrait-width-max: ($mq__iphone-6-7-8-plus-portrait-width-min - 1px);
-$mq__slim-tall-phone-portrait-width-max: ($mq__tall-phone-portrait-width-min - 1px);
+$mq__slim-tall-phone-portrait-width-max: ($mq__iphone-6-7-8-plus-portrait-width-min - 1px);
 
 @mixin small {
   @media only screen and (max-width: $mq__iphone-5-portrait-width-max) and (orientation: portrait) {
@@ -58,27 +58,27 @@ $mq__slim-tall-phone-portrait-width-max: ($mq__tall-phone-portrait-width-min - 1
   }
 }
 
-// Added for slim but taller devices
-@mixin slim-tall {
-  @media only screen and (max-width: $mq__iphone-5-portrait-width-max) and (max-height: $mq__slim-tall-phone-portrait-width-max) and (orientation: portrait) {
-    @content;
-  }
-}
-
-@mixin slim-tall-landscape {
-  @media only screen and (max-height: $mq__iphone-5-portrait-width-max) and (max-width: $mq__slim-tall-phone-portrait-width-max) and (orientation: landscape) {
-    @content;
-  }
-}
-
 @mixin tall {
-  @media only screen and (min-height: $mq__tall-phone-portrait-width-min) and (orientation: portrait) {
+  @media only screen and (min-height: $mq__tall-phone-portrait-height-min) and (orientation: portrait) {
     @content;
   }
 }
 
 @mixin tall-landscape {
-  @media only screen and (min-width: $mq__tall-phone-portrait-width-min) and (orientation: landscape) {
+  @media only screen and (min-width: $mq__tall-phone-portrait-height-min) and (orientation: landscape) {
+    @content;
+  }
+}
+
+// Added for slim but taller devices
+@mixin slim-tall {
+  @media only screen and (min-height: $mq__tall-phone-portrait-height-min) and (max-width: $mq__slim-tall-phone-portrait-width-max) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin slim-tall-landscape {
+  @media only screen and (min-width: $mq__tall-phone-portrait-height-min) and (max-height: $mq__slim-tall-phone-portrait-width-max) and (orientation: landscape) {
     @content;
   }
 }
