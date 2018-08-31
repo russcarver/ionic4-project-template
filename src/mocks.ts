@@ -1,5 +1,7 @@
 import { Observable, of, timer } from 'rxjs';
+import { take } from 'rxjs/operators';
 
+import { Foo } from 'shared/models';
 import { createSpyObj } from 'test-base';
 
 export class ToastMock { // tslint:disable:max-classes-per-file
@@ -569,6 +571,15 @@ export class NavControllerMock {
     instance.viewWillUnload = of();
 
     return instance;
+  }
+}
+
+export class ApiServiceMock {
+  public getFo(id: number): Observable<Foo> {
+    return of<any>({
+      id: 1,
+      name: 'John'
+    }).pipe(take(1));
   }
 
 } // tslint:disable-line:max-file-line-count

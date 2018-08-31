@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 
-import { Observable, Subject } from 'rxjs';
-
 import { isDefined, isUndefined } from 'lib/util';
 
-const spinnerDelay: number = 2000; // ms
+import { Observable, Subject } from 'rxjs';
+
+const spinnerDelay: number = 1000; // 1 second until we show spinner
 const maxSpinnerTime: number = 1800000; // 30 seconds
 let spinnerDisplayPending: boolean = false;
 
@@ -15,10 +15,10 @@ let spinnerDisplayPending: boolean = false;
  */
 @Component({
   selector: 'cmp-loading-spinner',
-  template: `<div></div>`
+  template: '<div></div>'
 })
 export class LoadingSpinnerComponent {
-  private spinner: any; // TODO: Update to actual type (used to be "Loading"
+  private spinner: HTMLIonLoadingElement;
   private spinnerPendingSubject: Subject<boolean> = new Subject<boolean>();
 
   /**
@@ -28,7 +28,7 @@ export class LoadingSpinnerComponent {
     return spinnerDisplayPending;
   }
 
-  public constructor(private loadingController: LoadingController) { }
+  public constructor(private loadingController: LoadingController) {}
 
   /**
    * This method is also to determine if the spinner is pending but you may subscribe to the result to get notifications of the spinner becoming
@@ -48,8 +48,7 @@ export class LoadingSpinnerComponent {
     setTimeout(() => {
       if (spinnerDisplayPending && isUndefined(this.spinner)) {
         this.setSpinnerPending(false);
-        this.createLoadingAnimation('loading-spinner-secondary');
-        this.spinner.present();
+        this.createLoadingAnimation();
       }
     }, spinnerDelay);
   }
@@ -59,8 +58,7 @@ export class LoadingSpinnerComponent {
     this.setSpinnerPending(true);
     if (spinnerDisplayPending && isUndefined(this.spinner)) {
       this.setSpinnerPending(false);
-      this.createLoadingAnimation('loading-spinner-secondary');
-      this.spinner.present();
+      this.createLoadingAnimation();
     }
   }
 
@@ -99,28 +97,22 @@ export class LoadingSpinnerComponent {
     this.spinnerPendingSubject.next(pending);
   }
 
-  private createLoadingAnimation(componentDefinition: string, durationInMilliseconds: number = maxSpinnerTime): void {
-    this.spinner = this.loadingController.create({
-      content: `
-        <div class="${componentDefinition}__container">
-          <img src="assets/img/loadingicon.gif" class="${componentDefinition}__container_icon">
-        </div>`,
-      cssClass: componentDefinition,
+  private async createLoadingAnimation(durationInMilliseconds: number = maxSpinnerTime, dismissCallback?: Function): Promise<void> {
+    this.spinner = await this.loadingController.create({
+      cssClass: 'cmp-loading-spinner',
       duration: durationInMilliseconds,
-      showBackdrop: false,
-      spinner: 'hide'
+      spinner: 'circles'
     });
+    await this.spinner.present();
+    if (isDefined(dismissCallback)) {
+      await this.spinner.onDidDismiss(dismissCallback());
+    }
   }
 
   private presentSpinner(durationInMilliseconds?: number, dismissCallback?: Function): void {
     if (spinnerDisplayPending && isUndefined(this.spinner)) {
       spinnerDisplayPending = false;
-      this.createLoadingAnimation('loading-spinner-white', durationInMilliseconds);
-      this.spinner.present();
-      if (isDefined(dismissCallback)) {
-        this.spinner.onDidDismiss(dismissCallback());
-      }
+      this.createLoadingAnimation(durationInMilliseconds, dismissCallback);
     }
   }
-
 }

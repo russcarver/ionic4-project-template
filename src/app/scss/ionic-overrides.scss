@@ -1,3 +1,57 @@
 ion-grid {
   padding: 0;
 }
+
+.cmp-loading-spinner {
+  & .loading-wrapper {
+    background-color: transparent;
+
+    @include large {
+      transform: scale(2) !important; // Override Ionic's inline style
+    }
+
+    @include large-landscape {
+      transform: scale(2) !important; // Override Ionic's inline style
+    }
+
+    @include ipad {
+      transform: scale(3) !important; // Override Ionic's inline style
+    }
+
+    @include ipad-landscape {
+      transform: scale(3) !important; // Override Ionic's inline style
+    }
+
+    & .loading-spinner {
+      color: var(--ion-color-secondary);
+    }
+  }
+}
+
+.alert-wrapper {
+  background-image: linear-gradient(
+      var(--background-gradient-gold1),
+      var(--background-gradient-gold2),
+      var(--background-gradient-gold3),
+      var(--background-gradient-gold4),
+      var(--background-gradient-gold5),
+      var(--background-gradient-gold6),
+      var(--background-gradient-gold7),
+      var(--background-gradient-gold8),
+      var(--background-gradient-gold9),
+      var(--background-gradient-gold10),
+      var(--background-gradient-gold11),
+      var(--background-gradient-gold12),
+      var(--background-gradient-gold13),
+      var(--background-gradient-gold14)
+  ) !important;
+
+  & .alert-message {
+    font-size: var(--font-size__button-large);
+    font-weight: var(--font-weight__semibold);
+  }
+
+  & .alert-button-inner {
+    color: var(--ion-color-dark);
+  }
+}
