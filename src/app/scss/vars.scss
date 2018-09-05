@@ -55,11 +55,11 @@
   --page__padding                : 16px;
   --page__padding--half          : 8px;
   --page__padding--small         : 12px;
-  --page__padding--medium        : var(--page__padding) + var(--page__padding) / 2;
-  --page__padding--double        : var(--page__padding) * 2;
+  --page__padding--medium        : calc(var(--page__padding) + var(--page__padding) / 2);
+  --page__padding--double        : calc(var(--page__padding) * 2);
   --page__padding--large         : 40px;
-  --page__padding--xlarge        : var(--page__padding--large) + var(--page__padding);
-  --page__padding--xxlarge       : var(--page__padding--large) * 2;
+  --page__padding--xlarge        : calc(var(--page__padding--large) + var(--page__padding));
+  --page__padding--xxlarge       : calc(var(--page__padding--large) * 2);
 
   --width-full                   : 100%;
 
