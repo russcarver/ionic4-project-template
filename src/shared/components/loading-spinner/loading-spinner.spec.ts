@@ -1,14 +1,13 @@
 import { async, fakeAsync, tick } from '@angular/core/testing';
 import { LoadingController } from '@ionic/angular';
 
-import createSpy = jasmine.createSpy;
-import Spy = jasmine.Spy;
-import SpyObj = jasmine.SpyObj;
+import noop from 'lib/noop';
 
 import { LoadingControllerMock, LoadingMock } from 'mocks';
 import { beforeEachCompiler, FixturePayload } from 'test-base';
 
 import { LoadingSpinnerComponent } from './loading-spinner';
+import Spy = jasmine.Spy;
 
 // tslint:disable:no-string-literal
 
@@ -19,6 +18,9 @@ let testFixturePayload: FixturePayload<LoadingSpinnerComponent>;
 const testLoadingMock: LoadingMock = LoadingMock.instance();
 testLoadingMock['onDidDismiss'].and.callFake((fn: Function) => {
   setTimeout(fn, testDelayInMs);
+});
+testLoadingMock['present'].and.callFake(() => {
+  noop();
 });
 
 describe('LoadingSpinnerComponent', () => {
@@ -70,16 +72,13 @@ describe('LoadingSpinnerComponent', () => {
       expect(animateSpy).toHaveBeenCalled();
     }));
 
-    it('should show spinner and then dismiss (custom delay)', async (done: Function) => {
-      const dismissSpy: Spy = createSpy();
+    it('should show spinner given a custom delay', () => {
       const presentSpy: Spy = spyOn(<any>testFixturePayload.instance, 'presentSpinner').and.callThrough();
       const animateSpy: Spy = spyOn(<any>testFixturePayload.instance, 'createLoadingAnimation').and.callThrough();
 
-      await testFixturePayload.instance.showSpinnerWithDuration(testDelayInMs, dismissSpy);
-      expect(presentSpy).toHaveBeenCalledWith(testDelayInMs, dismissSpy);
-      expect(animateSpy).toHaveBeenCalledWith(testDelayInMs, dismissSpy);
-      // expect(dismissSpy).toHaveBeenCalled(); // FIXME
-      done();
+      testFixturePayload.instance.showSpinnerWithDuration(testDelayInMs);
+      expect(presentSpy).toHaveBeenCalledWith(testDelayInMs);
+      expect(animateSpy).toHaveBeenCalledWith(testDelayInMs);
     });
 
     it('should clean up spinner', () => {
