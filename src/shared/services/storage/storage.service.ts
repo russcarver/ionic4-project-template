@@ -6,8 +6,7 @@ import { isUndefined } from 'lib/util';
 import { filter } from 'lodash';
 
 export const storageType: any = {
-  playerId: 'playermax.playerRef',
-  rootAppUrl: 'playermax.rootAppURL'
+  username: 'username'
 };
 
 @Injectable()
