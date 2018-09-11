@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
-import { filter } from 'lodash';
-
 import { isUndefined } from 'lib/util';
 
-export const StorageType: any = { // tslint:disable-line
-  username: 'username'
+import { filter } from 'lodash';
+
+export const storageType: any = {
+  playerId: 'playermax.playerRef',
+  rootAppUrl: 'playermax.rootAppURL'
 };
 
 @Injectable()
 export class StorageService {
-
-  public constructor(
-    private storage: Storage
-  ) { }
+  public constructor(private storage: Storage) {}
 
   public clearStorage(): void {
     this.storage.clear();
@@ -29,26 +27,30 @@ export class StorageService {
     return this.storage.set(key, value);
   }
 
-  public getValueForKey(key: string, callback: Function): void {
-    this.storage.get(key).then((value: any) => {
-      if (!value) {
-        callback();
-        return;
-      }
-      callback(value);
+  public getValueForKey(key: string): Promise<any> {
+    return new Promise<any>((resolve: Function): void => {
+      this.storage.get(key).then((value: any) => {
+        if (!value) {
+          resolve();
+        }
+        resolve(value);
+      });
     });
   }
 
-  public getValueForAllKeys(keys: string[], callback: Function): void {
+  public getValueForAllKeys(keys: string[]): Promise<any> {
     const result: any = {};
     let count: number = 0;
-    keys.forEach((key: string) => {
-      this.getValueForKey(key, (val: any) => {
-        count++;
-        result[key] = val;
-        if (count === keys.length) {
-          callback(result);
-        }
+
+    return new Promise<any>((resolve: Function): void => {
+      keys.forEach((key: string) => {
+        this.getValueForKey(key).then((val: any) => {
+          count++;
+          result[key] = val;
+          if (count === keys.length) {
+            resolve(result);
+          }
+        });
       });
     });
   }
@@ -64,5 +66,4 @@ export class StorageService {
   public anyStorageValueUndefined(values: any): boolean {
     return filter(values, isUndefined).length > 0;
   }
-
 }
