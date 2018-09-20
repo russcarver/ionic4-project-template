@@ -195,7 +195,9 @@ export abstract class RequestBaseClass {
 
   private retryCall(errors: Observable<any>): Observable<any> {
     return errors.pipe(
-      switchMap((error: any) => (error.status >= 400) ? throwError(error) : of(error)), // Don't retry for errors >= 400
+      switchMap((error: any) => {
+        return error.status === 0 || error.status >= 400 ? throwError(error) : of(error);
+      }), // Don't retry for unreachable hosts or errors >= 400
       delay(httpRetryDelay)
     );
   }
