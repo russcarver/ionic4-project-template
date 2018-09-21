@@ -179,6 +179,9 @@
       "node_modules",
       "src"
     ],
+    "moduleNameMapper": {
+      "^@ionic/core/loader": "<rootDir>/node_modules/@ionic/core/dist/esm/es5/ionic.define.js"
+    },
     "preset": "jest-preset-angular",
     "roots": [
       "<rootDir>/src"
