@@ -1,3 +1,16 @@
+:root {
+  // These are overwritten in app.component.ts - use in components like this:
+  //    @if var(--android) {
+  //      left: 21px;
+  //    }
+  --android: false;
+  --ios: false;
+}
+
+// These cannot be used in inside components since they can't cross the shadow dom barrier. Otherwise, use like this:
+//    @include ios {
+//      left: 21px;
+//    }
 @mixin ios {
   html.ios & {
     @content;
