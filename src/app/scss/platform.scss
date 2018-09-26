@@ -1,6 +1,6 @@
 :root {
   // These are overwritten in app.component.ts - use in components like this:
-  //    @if var(--android) {
+  //    @if var(--android) == true {
   //      left: 21px;
   //    }
   --android: false;
