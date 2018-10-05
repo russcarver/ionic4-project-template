@@ -581,5 +581,14 @@ export class ApiServiceMock {
       name: 'John'
     }).pipe(take(1));
   }
+}
 
+export class AppVersionMock {
+  public getVersionNumber(): Promise<string> {
+    return new Promise(
+      (resolve: Function): void => {
+        resolve('1.2.3');
+      }
+    );
+  }
 } // tslint:disable-line:max-file-line-count
