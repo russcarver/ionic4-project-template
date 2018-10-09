@@ -1,5 +1,5 @@
 import { getPage } from 'app/dev-landing-page/get-page';
-import { StorageService, StorageType } from 'shared/services/storage';
+import { StorageService } from 'shared/services/storage';
 
 let storageService: StorageService;
 let envVars: any;
@@ -18,7 +18,7 @@ export function signIn(): void {
 
 export function presetProfile(): void {
   // storageService.clearStorage() // Use only when needed
-  // storageService.setValueForKey(StorageType.key1, value1);
+  // storageService.setValueForKey(storageType.key1, value1);
 }
 
 export function init(
