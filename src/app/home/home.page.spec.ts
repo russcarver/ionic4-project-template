@@ -1,27 +1,45 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, inject } from '@angular/core/testing';
+import { AlertController } from '@ionic/angular';
 
-import { HomePage } from './home.page';
+import { HomePage } from 'app/home/home.page';
+import { ApiServiceMock } from 'mocks';
+import { PipesModule } from 'shared/pipes/pipes.module';
+import { AlertService } from 'shared/services/alert';
+import { ApiService } from 'shared/services/api/api.service';
+import { beforeEachCompiler, FixturePayload } from 'test-base';
+
+let testFixturePayload: FixturePayload<HomePage>;
+let apiService: ApiService;
 
 describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
-
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [HomePage],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-      .compileComponents();
+    beforeEachCompiler(
+      HomePage,
+      [
+        { provide: ApiService, useClass: ApiServiceMock },
+        AlertController,
+        AlertService
+      ],
+      [PipesModule],
+      [HomePage],
+      []
+    )
+      .then((fixturePayload: FixturePayload<HomePage>) => {
+        testFixturePayload = fixturePayload;
+      })
+      .catch((error: any) => {
+        console.log(error); // tslint:disable-line:no-console
+      });
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HomePage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(inject([ApiService], (_apiService: ApiService) => {
+    apiService = _apiService;
+  }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should exist', () => {
+    expect(testFixturePayload).toBeDefined();
+    expect(testFixturePayload.fixture).toBeDefined();
+    expect(testFixturePayload.instance).toBeDefined();
+    expect(apiService).toBeDefined();
   });
 });

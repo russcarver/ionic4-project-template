@@ -1,13 +1,18 @@
+// The following cannot be used in inside components since they can't cross the shadow dom barrier.
+// Otherwise, use like this:
+//    @include ios {
+//      left: 21px;
+//    }
 @mixin ios {
-  .platform-ios & {
+  html.ios & {
     @content;
   }
 }
 
-@mixin android($versions: ['']) {
-  @each $version in $versions {
-    .platform-android#{$version} & {
-      @content;
-    }
+@mixin android {
+  html.md & {
+    @content;
   }
 }
+
+// For inside a shadow dom, use [ngClass] tied to the Ionic platform value.

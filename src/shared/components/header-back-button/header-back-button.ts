@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController } from '@ionic/angular';
 
 import { isDefined } from 'lib/util';
 
@@ -19,6 +19,6 @@ export class HeaderBackButtonComponent {
       this.returnHandler();
       return;
     }
-    this.navCtrl.pop(); // Not using Angular routing here as we may not know where we came from
+    this.navCtrl.navigateBack(''); // TODO: Pass in as @Input
   }
 }

@@ -1,11 +1,12 @@
 import { async, inject } from '@angular/core/testing';
-import { NavController } from 'ionic-angular';
+import { NavController } from '@ionic/angular';
+
+import Spy = jasmine.Spy;
 
 import noop from 'lib/noop';
 import { NavControllerMock } from 'mocks';
 import { HeaderBackButtonComponent } from 'shared/components/header-back-button/header-back-button';
 import { beforeEachCompiler, FixturePayload } from 'test-base';
-import Spy = jasmine.Spy;
 
 let navCtrl: NavController;
 let testFixturePayload: FixturePayload<HeaderBackButtonComponent>;
@@ -43,7 +44,7 @@ describe('HeaderBackButtonComponent', () => {
 
   it('should go back a page when back is pressed when no return handler is defined', () => {
     testFixturePayload.instance.onBackPressed();
-    expect(navCtrl.pop).toHaveBeenCalled();
+    expect(navCtrl.navigateBack).toHaveBeenCalled();
   });
 
   it('should call the return handler when back is pressed if defined', () => {
@@ -52,7 +53,7 @@ describe('HeaderBackButtonComponent', () => {
 
     testFixturePayload.instance.onBackPressed();
     expect(returnSpy).toHaveBeenCalled();
-    expect(navCtrl.pop).not.toHaveBeenCalled();
+    expect(navCtrl.navigateBack).not.toHaveBeenCalled();
   });
 
 });

@@ -12,9 +12,9 @@ unit test environment, a base class for HTTP requests, a custom loading spinner 
 ### Install Node Version Manager
   1. Install nvm `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`
   1. Install avn `npm install -g avn avn-nvm avn-n` and then `avn setup`
-  1. Use nvm to install node 8.11.3 `nvm install 8.11.3`
+  1. Use nvm to install node 8.11.4 `nvm install 8.11.4`
   1. Update npm to 6.2.0 `npm install npm@6.2.0`
-  1. If wanted, set your default node version to 8.11.3 via `nvm alias default 8.11.3`
+  1. If wanted, set your default node version to 8.11.4 via `nvm alias default 8.11.4`
 
 ### Ionic & Cordova Dev Usage
  - Since we may be bouncing between versions of Ionic & Cordova, we're not installing these globally. They're in the `package.json` file.

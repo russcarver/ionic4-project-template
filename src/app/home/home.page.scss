@@ -1,1 +1,16 @@
+@import '../scss/imports';
+
+.home {
+
+  &__content {
+    @extend %page-content;
+
+    @include ios {
+      top: var(--ios-status-bar-height);
+    }
+
+    padding: var(--page__padding);
+  }
+
+}
 

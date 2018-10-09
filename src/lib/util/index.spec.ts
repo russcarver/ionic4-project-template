@@ -1,5 +1,5 @@
 import noop from 'lib/noop';
-import { censor, handleSubscriptions, isDefined, isUndefined, HandleSubscriptions } from 'lib/util';
+import { censor, handleSubscriptions, HandleSubscriptions, isDefined, isUndefined } from 'lib/util';
 
 interface MockSubscription {
   unsubscribe: Function;
@@ -52,7 +52,6 @@ describe('handle-subscriptions', () => {
 
     expect(actual).toEqual(expected);
   });
-
 
   it('should cleanup all subscriptions', () => {
     subscriptions.cleanup();

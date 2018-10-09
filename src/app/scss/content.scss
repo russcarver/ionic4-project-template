@@ -1,0 +1,25 @@
+%default-page-content-padding {
+  padding: 0 var(--page__padding);
+}
+
+%form-page-content-padding {
+  padding: var(--page__padding) var(--page__padding--double);
+}
+
+%page-content {
+  @include ios {
+    top: var(--ios-status-bar-height);
+  }
+  .scroll-content {
+    @extend %default-page-content-padding;
+  }
+}
+
+%page-content-form {
+  @include ios {
+    top: var(--ios-status-bar-height);
+  }
+  .scroll-content {
+    @extend %form-page-content-padding;
+  }
+}

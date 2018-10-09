@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
-import { of as observableOf, throwError, Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { delay, retryWhen, switchMap, timeout } from 'rxjs/operators';
 
 import { envVariables } from 'environments/environment-variables.token';
@@ -29,18 +29,22 @@ export abstract class RequestBaseClass {
 
     if (isUndefined(params.absolutePath) || !params.absolutePath) {
       params.path = this.urlStart + params.path;
+
+      const requestOptions: { headers: HttpHeaders; params: HttpParams } = {
+        headers: this.addRequestHeaders(params.headers),
+        params: this.addQueryParams(params.queryParams)
+      };
+
+      return this.http.get(params.path, requestOptions).pipe(
+        retryWhen(this.retryCall),
+        timeout(this.envVars.httpTimeoutDefault)
+      );
     }
 
-    const requestOptions: { headers: HttpHeaders; params: HttpParams } = {
-      headers: this.addRequestHeaders(params.headers),
-      params: this.addQueryParams(params.queryParams)
-    };
-
-    return this.http.get(params.path, requestOptions).pipe(
+    return this.http.get(params.path).pipe(
       retryWhen(this.retryCall),
       timeout(this.envVars.httpTimeoutDefault)
     );
-
   }
 
   protected patch(params: RequestSpec): Observable<any> {
@@ -48,17 +52,23 @@ export abstract class RequestBaseClass {
       throw new Error('Request::Patch::Path is a required parameter');
     }
 
+    const body: any = params.body;
+
     if (isUndefined(params.absolutePath) || !params.absolutePath) {
       params.path = this.urlStart + params.path;
+
+      const requestOptions: { headers: HttpHeaders; params: HttpParams } = {
+        headers: this.addRequestHeaders(params.headers),
+        params: this.addQueryParams(params.queryParams)
+      };
+
+      return this.http.patch(params.path, body, requestOptions).pipe(
+        retryWhen(this.retryCall),
+        timeout(this.envVars.httpTimeoutDefault)
+      );
     }
 
-    const body: any = params.body;
-    const requestOptions: { headers: HttpHeaders; params: HttpParams } = {
-      headers: this.addRequestHeaders(params.headers),
-      params: this.addQueryParams(params.queryParams)
-    };
-
-    return this.http.patch(params.path, body, requestOptions).pipe(
+    return this.http.patch(params.path, body).pipe(
       retryWhen(this.retryCall),
       timeout(this.envVars.httpTimeoutDefault)
     );
@@ -69,20 +79,27 @@ export abstract class RequestBaseClass {
       throw new Error('Request::Post::Path is a required parameter');
     }
 
+    const body: any = JSON.stringify(params.body);
+
     if (isUndefined(params.absolutePath) || !params.absolutePath) {
       params.path = this.urlStart + params.path;
+
+      const requestOptions: { headers: HttpHeaders; params: HttpParams } = {
+        headers: this.addRequestHeaders(params.headers),
+        params: this.addQueryParams(params.queryParams)
+      };
+
+      return this.http.post(params.path, body, requestOptions).pipe(
+        retryWhen(this.retryCall),
+        timeout(this.envVars.httpTimeoutDefault)
+      );
     }
 
-    const body: any = JSON.stringify(params.body);
-    const requestOptions: { headers: HttpHeaders; params: HttpParams } = {
-      headers: this.addRequestHeaders(params.headers),
-      params: this.addQueryParams(params.queryParams)
-    };
-
-    return this.http.post(params.path, body, requestOptions).pipe(
+    return this.http.post(params.path, body).pipe(
       retryWhen(this.retryCall),
       timeout(this.envVars.httpTimeoutDefault)
     );
+
   }
 
   protected put(params: RequestSpec): Observable<any> {
@@ -90,17 +107,23 @@ export abstract class RequestBaseClass {
       throw new Error('Request::Put::Path is a required parameter');
     }
 
+    const body: any = params.body;
+
     if (isUndefined(params.absolutePath) || !params.absolutePath) {
       params.path = this.urlStart + params.path;
+
+      const requestOptions: { headers: HttpHeaders; params: HttpParams } = {
+        headers: this.addRequestHeaders(params.headers),
+        params: this.addQueryParams(params.queryParams)
+      };
+
+      return this.http.put(params.path, body, requestOptions).pipe(
+        retryWhen(this.retryCall),
+        timeout(this.envVars.httpTimeoutDefault)
+      );
     }
 
-    const body: any = params.body;
-    const requestOptions: { headers: HttpHeaders; params: HttpParams } = {
-      headers: this.addRequestHeaders(params.headers),
-      params: this.addQueryParams(params.queryParams)
-    };
-
-    return this.http.put(params.path, body, requestOptions).pipe(
+    return this.http.put(params.path, body).pipe(
       retryWhen(this.retryCall),
       timeout(this.envVars.httpTimeoutDefault)
     );
@@ -113,14 +136,19 @@ export abstract class RequestBaseClass {
 
     if (isUndefined(params.absolutePath) || !params.absolutePath) {
       params.path = this.urlStart + params.path;
+
+      const requestOptions: { headers: HttpHeaders; params: HttpParams } = {
+        headers: this.addRequestHeaders(params.headers),
+        params: this.addQueryParams(params.queryParams)
+      };
+
+      return this.http.delete(params.path, requestOptions).pipe(
+        retryWhen(this.retryCall),
+        timeout(this.envVars.httpTimeoutDefault)
+      );
     }
 
-    const requestOptions: { headers: HttpHeaders; params: HttpParams } = {
-      headers: this.addRequestHeaders(params.headers),
-      params: this.addQueryParams(params.queryParams)
-    };
-
-    return this.http.delete(params.path, requestOptions).pipe(
+    return this.http.delete(params.path).pipe(
       retryWhen(this.retryCall),
       timeout(this.envVars.httpTimeoutDefault)
     );
@@ -167,7 +195,9 @@ export abstract class RequestBaseClass {
 
   private retryCall(errors: Observable<any>): Observable<any> {
     return errors.pipe(
-      switchMap((error: any) => (error.status >= 400) ? throwError(error) : observableOf(error)), // Don't retry for errors >= 400
+      switchMap((error: any) => {
+        return error.status === 0 || error.status >= 400 ? throwError(error) : of(error);
+      }), // Don't retry for unreachable hosts or errors >= 400
       delay(httpRetryDelay)
     );
   }

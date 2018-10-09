@@ -13,15 +13,15 @@ APP_NAME = process.env[`npm_package_config_app_name_${env}`];
 PROD_APP_ID = 'com.russcarver.ionic4Template';
 NON_PROD_APP_ID = 'com.russcarver.ionic4Template';
 
-APP_VERSION = '1.0.0'; // Share App Version (android, ios)
-
 const fs = require('fs');
 const xml2js = require('xml2js');
 
-let appVersion = APP_VERSION;
-if (process.env.APP_VERSION) {
-  appVersion = process.env.APP_VERSION;
-}
+// Uncomment when you are using a build server that is setting the APP_VERSION process environment variable
+// APP_VERSION = '1.0.0'; // Share App Version (android, ios)
+// let appVersion = APP_VERSION;
+// if (process.env.APP_VERSION) {
+//   appVersion = process.env.APP_VERSION;
+// }
 
 let newAppName = APP_NAME;
 let newAppID_Android = PROD_APP_ID;
@@ -63,9 +63,10 @@ fs.readFile('config.xml', 'utf8', function (err, data) {
     console.log('(id) android-packageName: ' + newAppID_Android);
     console.log('(id) ios-CFBundleIdentifier: ' + newAppID_IOS);
 
+    // Uncomment when you are using a build server that is setting the APP_VERSION process environment variable
     // Set shared platform version
-    obj['widget']['$']['version'] = appVersion;
-    console.log('version: ' + appVersion);
+    // obj['widget']['$']['version'] = appVersion;
+    // console.log('version: ' + appVersion);
 
     obj['widget']['name'] = newAppName;
     console.log('New Name: ' + newAppName);

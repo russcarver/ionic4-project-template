@@ -3,7 +3,6 @@
     "node_modules/codelyzer",
     "node_modules/tslint-eslint-rules/dist/rules"
   ],
-  // "extends": ["angular-tslint-rules"],
   "rules": {
     //
     // Codelyzer
@@ -18,14 +17,12 @@
     "no-forward-ref": true,
     "no-input-rename": true,
     "no-output-rename": true,
-    "no-unused-css": true, // Docs for this are missing.
+    // "no-unused-css": true, // Doesn't seem to be working with Angular6 and the 'styleUrls' array
     "use-life-cycle-interface": true,
     "use-pipe-decorator": true,
     "use-pipe-transform-interface": true,
-    // "use-view-encapsulation": true, - TODO: Look to see if this is required.
 
     // Style
-    // "angular-whitespace": [true, "check-interpolation"],
     "component-class-suffix": [
       true,
       "Component",
@@ -35,8 +32,7 @@
       true,
       "element",
       [
-        "cmp",
-        "page"
+        "cmp"
       ],
       "kebab-case"
     ],
@@ -84,7 +80,6 @@
         ]
       }
     ],
-    "no-import-side-effect": [ true, { "ignore-pattern": "/jasmine/" } ],
     "no-var-requires": true,
     "only-arrow-functions": [
       true,
@@ -157,8 +152,6 @@
       true,
       "allow-fast-null-checks"
     ],
-    // "no-unused-variable": true, -- Unfortunately this is not working correctly.
-    // https://github.com/palantir/tslint/issues/2470
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "radix": true,
@@ -184,7 +177,7 @@
       true,
       400
     ],
-    "no-default-export": true,
+    "no-default-export": false,
     "no-duplicate-imports": true,
     "no-require-imports": true,
     "object-literal-sort-keys": true,
@@ -235,8 +228,7 @@
     "ordered-imports": [
       true,
       {
-        "import-sources-order": "lowercase-first",
-        "named-imports-order": "lowercase-first"
+        "import-sources-order": "lowercase-last"
       }
     ],
     "prefer-method-signature": true,
@@ -281,7 +273,6 @@
       "check-separator",
       "check-rest-spread",
       "check-type",
-      "check-typecast",
       "check-type-operator",
       "check-preblock"
     ]
