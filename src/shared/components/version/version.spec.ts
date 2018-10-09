@@ -41,7 +41,7 @@ describe('VersionComponent', () => {
       platform.is = (): boolean => {
         return true;
       };
-      // ngAfterViewInit should be triggered after first detectChanges
+
       testFixturePayload.fixture.detectChanges();
 
       testFixturePayload.fixture

@@ -65,9 +65,9 @@ export class LoadingSpinnerComponent {
   /**
    * This will show the spinner immediately, for the duration specified.
    */
-  public showSpinnerWithDuration(durationInMilliseconds: number, dismissCallback?: Function): void {
+  public showSpinnerWithDuration(durationInMilliseconds: number): void {
     this.setPending(true);
-    this.presentSpinner(durationInMilliseconds, dismissCallback);
+    this.presentSpinner(durationInMilliseconds);
   }
 
   /**
@@ -97,22 +97,20 @@ export class LoadingSpinnerComponent {
     this.spinnerPendingSubject.next(pending);
   }
 
-  private async createLoadingAnimation(durationInMilliseconds: number = maxSpinnerTime, dismissCallback?: Function): Promise<void> {
+  private async createLoadingAnimation(durationInMilliseconds: number = maxSpinnerTime): Promise<void> {
+    this.cleanup();
     this.spinner = await this.loadingController.create({
       cssClass: 'cmp-loading-spinner',
       duration: durationInMilliseconds,
       spinner: 'circles'
     });
     await this.spinner.present();
-    if (isDefined(dismissCallback)) {
-      await this.spinner.onDidDismiss(dismissCallback());
-    }
   }
 
-  private presentSpinner(durationInMilliseconds?: number, dismissCallback?: Function): void {
+  private presentSpinner(durationInMilliseconds?: number): void {
     if (spinnerDisplayPending && isUndefined(this.spinner)) {
       spinnerDisplayPending = false;
-      this.createLoadingAnimation(durationInMilliseconds, dismissCallback);
+      this.createLoadingAnimation(durationInMilliseconds);
     }
   }
 }
