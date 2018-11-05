@@ -1,2 +1,2 @@
 export { StorageServiceModule } from './storage.service.module';
-export { StorageService, StorageType } from './storage.service';
+export { StorageService, storageType } from './storage.service';
