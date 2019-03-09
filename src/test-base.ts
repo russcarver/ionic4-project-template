@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, Injector, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { App, Config, DomController, MenuController, ModalController, NavController, Platform } from '@ionic/angular';
+import { DomController, ModalController, Platform } from '@ionic/angular';
 
 import { AppErrorHandler } from 'app/app.module';
 import { EnvironmentsModule } from 'environments/environment-variables.module';

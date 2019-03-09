@@ -1,8 +1,5 @@
 {
-  "rulesDirectory": [
-    "node_modules/codelyzer",
-    "node_modules/tslint-eslint-rules/dist/rules"
-  ],
+  "rulesDirectory": ["node_modules/codelyzer", "node_modules/tslint-eslint-rules/dist/rules"],
   "rules": {
     //
     // Codelyzer
@@ -17,41 +14,16 @@
     "no-forward-ref": true,
     "no-input-rename": true,
     "no-output-rename": true,
-    // "no-unused-css": true, // Doesn't seem to be working with Angular6 and the 'styleUrls' array
     "use-life-cycle-interface": true,
     "use-pipe-decorator": true,
     "use-pipe-transform-interface": true,
 
     // Style
-    "component-class-suffix": [
-      true,
-      "Component",
-      "Page"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      [
-        "cmp"
-      ],
-      "kebab-case"
-    ],
-    "directive-class-suffix": [
-      true,
-      "Directive"
-    ],
-    "directive-selector": [
-      true,
-      "attribute",
-      [
-        "dir"
-      ],
-      "camelCase"
-    ],
-    "pipe-naming": [
-      "camelCase",
-      "pipe"
-    ],
+    "component-class-suffix": [true, "Component", "Page"],
+    "component-selector": [true, "element", ["app", "ati"], "kebab-case"],
+    "directive-class-suffix": [true, "Directive"],
+    "directive-selector": [true, "attribute", ["app", "ati", "dir"], "camelCase"],
+    "pipe-naming": ["camelCase", "pipe"],
     "use-host-property-decorator": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
@@ -81,11 +53,7 @@
       }
     ],
     "no-var-requires": true,
-    "only-arrow-functions": [
-      true,
-      "allow-declarations",
-      "allow-named-functions"
-    ],
+    "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
     "typedef": [
       true,
       "call-signature",
@@ -120,26 +88,14 @@
     // Functionality
     "await-promise": true,
     "curly": true,
-    "import-blacklist": [
-      true
-    ],
+    "import-blacklist": [true, "rxjs/Rx", "rxjs/internal/operators"],
     "no-conditional-assignment": true,
-    "no-console": [
-      true,
-      "debug",
-      "error",
-      "group",
-      "info",
-      "log"
-    ],
+    "no-console": [true, "debug", "error", "group", "info", "log"],
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-super": true,
     "no-duplicate-variable": true,
-    "no-empty": [
-      true,
-      "allow-empty-catch"
-    ],
+    "no-empty": [true, "allow-empty-catch"],
     "no-eval": true,
     "no-invalid-this": true,
     "no-object-literal-type-assertion": true,
@@ -148,10 +104,7 @@
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
     "no-this-assignment": true,
-    "no-unused-expression": [
-      true,
-      "allow-fast-null-checks"
-    ],
+    "no-unused-expression": [true, "allow-fast-null-checks"],
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "radix": true,
@@ -161,26 +114,14 @@
 
     // Maintainability
     "eofline": true,
-    "indent": [
-      true,
-      "spaces",
-      2
-    ],
-    "max-classes-per-file": [
-      true,
-      1
-    ],
-    "max-line-length": [
-      150
-    ],
-    "max-file-line-count": [
-      true,
-      400
-    ],
+    "indent": [true, "spaces", 2],
+    "max-classes-per-file": [true, 1],
+    "max-line-length": [120],
+    "max-file-line-count": [true, 400],
     "no-default-export": false,
     "no-duplicate-imports": true,
     "no-require-imports": true,
-    "object-literal-sort-keys": true,
+    "object-literal-sort-keys": false, // No vscode tool to auto sort true,
     "prefer-const": true,
     "trailing-comma": [
       true,
@@ -193,56 +134,32 @@
     "arrow-parens": true,
     "binary-expression-operand-order": true,
     "class-name": true,
-    "comment-format": [
-      true,
-      "check-space"
-    ],
+    "comment-format": [true, "check-space"],
     "encoding": true,
     "import-spacing": true,
     "jsdoc-format": true,
     "newline-before-return": false,
     "new-parens": true,
-    "no-consecutive-blank-lines": [
-      true,
-      2
-    ],
+    "no-consecutive-blank-lines": [true, 2],
     "no-irregular-whitespace": true,
     "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
     "number-literal-format": true,
-    "object-literal-key-quotes": [
-      true,
-      "as-needed"
-    ],
-    "one-line": [
-      true,
-      "check-catch",
-      "check-finally",
-      "check-else",
-      "check-open-brace"
-    ],
-    "one-variable-per-declaration": [
-      true,
-      "ignore-for-loop"
-    ],
+    "object-literal-key-quotes": [true, "as-needed"],
+    "one-line": [true, "check-catch", "check-finally", "check-else", "check-open-brace"],
+    "one-variable-per-declaration": [true, "ignore-for-loop"],
     "ordered-imports": [
       true,
       {
-        "import-sources-order": "lowercase-last"
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "case-insensitive"
       }
     ],
     "prefer-method-signature": true,
     "prefer-switch": true,
     "prefer-template": true,
-    "quotemark": [
-      true,
-      "single",
-      "avoid-escape"
-    ],
-    "semicolon": [
-      true,
-      "always"
-    ],
+    "quotemark": [true, "single", "avoid-escape"],
+    "semicolon": [true, "always"],
     "space-before-function-paren": [
       true,
       {
@@ -253,17 +170,9 @@
         "constructor": "never"
       }
     ],
-    "space-in-parens": [
-      true,
-      "never"
-    ],
+    "space-in-parens": [true, "never"],
     "type-literal-delimiter": true,
-    "variable-name": [
-      true,
-      "ban-keywords",
-      "check-format",
-      "allow-leading-underscore"
-    ],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
     "whitespace": [
       true,
       "check-branch",
