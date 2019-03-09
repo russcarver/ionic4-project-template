@@ -1,16 +1,20 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "allowJs": true,
     "outDir": "../out-tsc/spec",
     "baseUrl": "./",
     "module": "commonjs",
     "types": [
       "jasmine",
+      "jest",
+      "jsdom",
       "node"
     ]
   },
   "include": [
     "polyfills.ts",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "**/*.d.ts"
   ]
 }
