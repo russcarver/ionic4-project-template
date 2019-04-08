@@ -1,10 +1,8 @@
 import { async, inject } from '@angular/core/testing';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { Platform } from '@ionic/angular';
-
 import { AppVersionMock, PlatformMock } from 'mocks';
 import { beforeEachCompiler, FixturePayload } from 'test-base';
-
 import { VersionComponent } from './version';
 
 let testFixturePayload: FixturePayload<VersionComponent>;

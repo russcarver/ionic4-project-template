@@ -8,7 +8,6 @@
     "types": [
       "jasmine",
       "jest",
-      "jsdom",
       "node"
     ]
   },

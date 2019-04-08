@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { envVariables } from 'environments/environment-variables.token';
 import { Environment } from 'environments/environment.model';
 import { getEnvVars } from 'environments/index';
