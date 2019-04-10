@@ -64,7 +64,7 @@
     "@ionic-native/status-bar": "5.4.0",
     "@ionic/angular": "4.2.0",
     "@ionic/storage": "2.2.0",
-    "cordova": "7.1.0",
+    "cordova": "8.1.2",
     "cordova-android": "8.0.0",
     "cordova-custom-config": "5.1.0",
     "cordova-ios": "5.0.0",
@@ -84,7 +84,7 @@
     "moment": "2.24.0",
     "rxjs": "6.4.0",
     "xml2js": "0.4.19",
-    "zone.js": "0.9.0"
+    "zone.js": "0.8.29"
   },
   "devDependencies": {
     "@angular-devkit/architect": "0.12.4",
