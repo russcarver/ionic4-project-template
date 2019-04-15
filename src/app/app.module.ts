@@ -9,13 +9,11 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage';
-
 import { HomePageModule } from 'app/home/home.module';
 import { isDev } from 'environments';
 import { EnvironmentsModule } from 'environments/environment-variables.module';
 import { InjectorService } from 'shared/services/injector/injector.service';
 import { SharedModule } from 'shared/shared.module';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 

@@ -33,7 +33,7 @@ module.exports = function(context) {
 
     console.log('Configuring Xcode project...');
 
-    // Copy entitilements file
+    // Copy entitlements file
     utilities.copyFile('App.entitlements', 'platforms/ios/' + projectName + '/' + projectName + '.entitlements');
 
     // Update xcodeproj file
