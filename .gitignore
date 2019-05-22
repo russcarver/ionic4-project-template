@@ -51,6 +51,7 @@ src/**/*.js
 !src/assets/js/scroller/Animate.js
 !src/assets/js/scroller/Scroller.js
 !src/app/scss/icons/demo-files/demo.js
+!src/jest.config.js
 .sourcemaps
 
 # Compiled JS automation files
