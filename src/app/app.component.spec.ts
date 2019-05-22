@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
 import { beforeEachCompiler, createSpyObj, FixturePayload } from 'test-base';
 import { AppComponent } from './app.component';
+import Spy = jasmine.Spy;
 import SpyObj = jasmine.SpyObj;
 
 // tslint:disable:no-string-literal
@@ -43,29 +44,25 @@ describe('AppComponent', () => {
     platform = _platform;
   }));
 
-  it('should be true', () => {
-    expect(true).toBeTruthy();
+  describe('constructor', () => {
+    it('should create the app', () => {
+      expect(testFixturePayload).toBeDefined();
+      expect(testFixturePayload.fixture).toBeDefined();
+      expect(instance).toBeDefined();
+    });
   });
 
-  // describe('constructor', () => {
-  //   it('should create the app', () => {
-  //     expect(testFixturePayload).toBeDefined();
-  //     expect(testFixturePayload.fixture).toBeDefined();
-  //     expect(instance).toBeDefined();
-  //   });
-  // });
-  //
-  // describe('setNativeDefaults', () => {
-  //   it('should set the native defaults', () => {
-  //     platform.is = (): boolean => { return true; };
-  //     const screenOrientationSpy: Spy = spyOn((<any>instance).screenOrientation, 'lock');
-  //
-  //     (<any>instance).setNativeDefaults();
-  //
-  //     expect(splashScreenSpy.hide).toHaveBeenCalled();
-  //     expect(statusBarSpy.styleDefault).toHaveBeenCalled();
-  //     expect(screenOrientationSpy).toHaveBeenCalledWith('portrait-primary');
-  //   });
-  // });
+  describe('setNativeDefaults', () => {
+    it('should set the native defaults', () => {
+      platform.is = (): boolean => { return true; };
+      const screenOrientationSpy: Spy = spyOn((<any>instance).screenOrientation, 'lock');
+
+      (<any>instance).setNativeDefaults();
+
+      expect(splashScreenSpy.hide).toHaveBeenCalled();
+      expect(statusBarSpy.styleDefault).toHaveBeenCalled();
+      expect(screenOrientationSpy).toHaveBeenCalledWith('portrait-primary');
+    });
+  });
 
 });
