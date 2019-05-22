@@ -89,7 +89,7 @@ To build the project, type one of the following commands:
  - To run and watch tests, from the root of the project folder, type: `npm test`
  - If you want to run the test suite just once: `npm run single-test-run`
  - During the watch, there is a runtime option for specifying a file.  Type `p` and start typing your file name.
- - If you want to run one or more specific directories of tests, you can update `roots` in the `jest` section of `package.json` as such:
+ - If you want to run one or more specific directories of tests, you can update `roots` in the `jest` section of `jest.config.ts` as such:
    ```
    "roots": [
        "<rootDir>/src/providers",
