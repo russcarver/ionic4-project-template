@@ -40,11 +40,10 @@
     "run-md-dev": "npm run pre-script && NODE_ENV=dev ionic cordova run android --configuration=dev",
     "run-md-prod": "npm run pre-script && NODE_ENV=prod ionic cordova run android --configuration=production",
     "run-md-test": "npm run pre-script && NODE_ENV=test ionic cordova run android --configuration=test",
-    "single-test-run": "npm run pre-script && NODE_OPTIONS=--max-old-space-size=$npm_package_config_jest_memory_size ng test",
     "start": "npm run clean && npm run pre-script && npm run no-csp && NODE_ENV=dev ng serve --configuration=dev",
     "start-dev": "npm run clean && npm run pre-script && npm run no-csp && NODE_ENV=dev ionic serve -c --configuration=dev",
-    "test": "npm run single-test-run -- --watch",
-    "test-no-cache": "npm run single-test-run -- --watch --no-cache"
+    "test": "npm run pre-script && NODE_OPTIONS=--max-old-space-size=$npm_package_config_jest_memory_size ng test",
+    "test-watch": "npm run pre-script && NODE_OPTIONS=--max-old-space-size=$npm_package_config_jest_memory_size ng test -- --watch"
   },
   "dependencies": {
     "@angular/animations": "7.2.15",
@@ -79,7 +78,7 @@
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.3",
-    "core-js": "2.6.5",
+    "core-js": "2.6.8",
     "device": "0.3.9",
     "es6-promise-plugin": "4.2.2",
     "ionic": "4.12.0",
@@ -106,7 +105,7 @@
     "@types/jasmine": "3.3.12",
     "@types/jasminewd2": "2.0.6",
     "@types/jest": "24.0.13",
-    "@types/node": "11.13.0",
+    "@types/node": "12.0.2",
     "acorn": "6.1.1",
     "codelyzer": "5.0.0",
     "fs-extra": "7.0.1",
@@ -115,7 +114,7 @@
     "jest": "24.8.0",
     "jest-preset-angular": "7.1.1",
     "jest-zone-patch": "0.0.10",
-    "node-sass": "4.11.0",
+    "node-sass": "4.12.0",
     "npm": "6.9.0",
     "replace-in-file": "3.4.4",
     "ts-node": "8.0.3",
@@ -125,7 +124,7 @@
   },
   "engineStrict": true,
   "engines": {
-    "node": "10.15.3",
+    "node": "11.15.0",
     "npm": "6.9.0"
   },
   "config": {

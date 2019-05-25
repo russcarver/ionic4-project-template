@@ -8,8 +8,7 @@ module.exports = {
   globals: {
     'ts-jest': {
       babelConfig: {
-        presets: [['@babel/preset-env', { targets: { node: true }, modules: 'commonjs' }]],
-        plugins: ['@babel/plugin-syntax-dynamic-import']
+        presets: [['@babel/preset-env', { targets: { node: true }, modules: 'commonjs' }]], plugins: ['@babel/plugin-syntax-dynamic-import']
       }
     }
   },
@@ -21,11 +20,8 @@ module.exports = {
   testURL: 'http://localhost',
   testPathIgnorePatterns: ['<rootDir>/src/environments/environment.test.ts'],
   transform: {
-    // '^.+\\.(ts|js|html)$': '<rootDir>/node_modules/jest-preset-angular/jest-preset.js',
     '^.+\\.tsx?$': '<rootDir>/node_modules/ts-jest'
   },
-  transformIgnorePatterns: [
-    '<rootDir>/node_modules/(?!@angular|@ionic|@ionic-native)',
-    `<rootDir>/node_modules/(?!${esModules})`],
+  transformIgnorePatterns: ['<rootDir>/node_modules/(?!@angular|@ionic|@ionic-native)', `<rootDir>/node_modules/(?!${esModules})`],
   verbose: true
 };

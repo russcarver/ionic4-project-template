@@ -119,7 +119,9 @@
         },
         "test": {
           "builder": "@angular-builders/jest:run",
-          "options": {}
+          "options": {
+            "coverage": true
+          }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
