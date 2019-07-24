@@ -90,6 +90,7 @@ To build the project, type one of the following commands:
  - To run tests for only files that have changed, use `npm run test-changed`
  - To run and watch tests, use `npm test-watch`
  - During the watch, there is a runtime option for specifying a file.  Type `p` and start typing your file name.
+ - With the latest Jest (24+) coverage percentages can be seen only by viewing `coverage/lcov-report/index.html`.
 
 ## Troubleshooting Android
 

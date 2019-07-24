@@ -3,7 +3,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, Injector, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Config, DomController, MenuController, ModalController, NavController, Platform } from '@ionic/angular';
-import { AppComponent } from 'app/app.component';
 import { AppErrorHandler } from 'app/app.module';
 import { EnvironmentsModule } from 'environments/environment-variables.module';
 import noop from 'lib/noop';
@@ -79,7 +78,7 @@ export function beforeEachProviderCompiler(providers: Array<any>, imports?: Arra
 function configureIonicTestingModule(mockProviders: Array<any> = [], imports: Array<any> = [], declarations: Array<any> = []): typeof TestBed {
   mockProviders = [
     { provide: ErrorHandler, useClass: AppErrorHandler },
-    AppComponent, Injector, DomController, MenuController, NavController, ModalController,
+    Injector, DomController, MenuController, NavController, ModalController,
     { provide: StorageService, useClass: StorageServiceMock },
     { provide: Platform, useClass: PlatformMock },
     { provide: Config, useClass: ConfigMock }
