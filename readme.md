@@ -86,16 +86,10 @@ To build the project, type one of the following commands:
 ## Test and Coverage with Jest
  - If not installed already, run `brew install watchman`
  - The first time running tests, make sure you have no javascript files in your project that are compiled from typescript
- - To run and watch tests, from the root of the project folder, type: `npm test`
- - If you want to run the test suite just once: `npm run single-test-run`
+ - To run all the tests once, use `npm run test`
+ - To run tests for only files that have changed, use `npm run test-changed`
+ - To run and watch tests, use `npm test-watch`
  - During the watch, there is a runtime option for specifying a file.  Type `p` and start typing your file name.
- - If you want to run one or more specific directories of tests, you can update `roots` in the `jest` section of `package.json` as such:
-   ```
-   "roots": [
-       "<rootDir>/src/providers",
-       "<rootDir>/src/pages"
-   ],
-   ```
 
 ## Troubleshooting Android
 
