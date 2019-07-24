@@ -43,8 +43,9 @@
     "single-test-run": "npm run pre-script && NODE_OPTIONS=--max-old-space-size=$npm_package_config_jest_memory_size jest",
     "start": "npm run clean && npm run pre-script && npm run no-csp && NODE_ENV=dev ng serve --configuration=dev",
     "start-dev": "npm run clean && npm run pre-script && npm run no-csp && NODE_ENV=dev ionic serve -c --configuration=dev",
-    "test": "npm run pre-script && NODE_OPTIONS=--max-old-space-size=$npm_package_config_jest_memory_size jest --watch",
-    "test-no-cache": "npm test -- --watch --no-cache"
+    "test": "npm run pre-script && NODE_OPTIONS=--max-old-space-size=$npm_package_config_jest_memory_size ng test",
+    "test-changed": "npm run pre-script && NODE_OPTIONS=--max-old-space-size=$npm_package_config_jest_memory_size ng test -- --onlyChanged",
+    "test-watch": "npm run pre-script && NODE_OPTIONS=--max-old-space-size=$npm_package_config_jest_memory_size ng test -- --watch"
   },
   "dependencies": {
     "@angular/animations": "8.1.2",
@@ -89,6 +90,7 @@
     "zone.js": "0.9.1"
   },
   "devDependencies": {
+    "@angular-builders/jest": "8.0.4",
     "@angular-devkit/architect": "0.801.2",
     "@angular-devkit/build-angular": "0.801.2",
     "@angular-devkit/core": "8.1.2",
@@ -158,56 +160,5 @@
       "ios",
       "browser"
     ]
-  },
-  "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "**/*.ts",
-      "!**/src/*",
-      "!**/src/**/*.module.ts",
-      "!**/src/shared/**/index.ts",
-      "!**/app/main.ts",
-      "!**/assets/**",
-      "!**/src/environments/environment.*"
-    ],
-    "coverageDirectory": "coverage",
-    "coverageReporters": [
-      "lcov"
-    ],
-    "globals": {
-      "__TRANSFORM_HTML__": true,
-      "ts-jest": {
-        "tsConfigFile": "src/tsconfig.spec.json"
-      }
-    },
-    "moduleDirectories": [
-      "node_modules",
-      "src"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "preset": "jest-preset-angular",
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts",
-    "testURL": "http://localhost",
-    "testPathIgnorePatterns": [
-      "<rootDir>/src/environments/environment.test.ts"
-    ],
-    "transform": {
-      "^.+\\.(ts|js|html)$": "<rootDir>/node_modules/jest-preset-angular/preprocessor.js",
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "transformIgnorePatterns": [
-      "<rootDir>/node_modules/(?!@angular|@ionic|@ionic-native)"
-    ],
-    "verbose": false
   }
 }
