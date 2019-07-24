@@ -13,7 +13,7 @@ import { ApiService } from 'shared/services/api/api.service';
   templateUrl: 'home.page.html'
 })
 export class HomePage implements OnDestroy, OnInit {
-  @ViewChild('loadingSpinner') public loadingSpinner: LoadingSpinnerComponent;
+  @ViewChild('loadingSpinner', { static: true }) public loadingSpinner: LoadingSpinnerComponent;
 
   public foo: Object;
 

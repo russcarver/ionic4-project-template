@@ -120,6 +120,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "configPath": "src/jest.config.js",
             "coverage": true
           }
         },
@@ -127,19 +128,15 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tslintConfig": "tslint.json",
-            "files": [
-              "src/**/*.ts"
-            ],
+            "files": ["src/**/*.ts"],
             "exclude": [
               "**/node_modules/**",
               "src/**.*.d.ts",
-              "src/jestGlobalMocks.ts",
+              "src/jest.config.js",
               "src/setupJest.ts",
               "src/test-base.ts"
             ],
-            "tsConfig": [
-              "src/tsconfig.app.json"
-            ]
+            "tsConfig": ["src/tsconfig.app.json"]
           }
         },
         "ionic-cordova-build": {
