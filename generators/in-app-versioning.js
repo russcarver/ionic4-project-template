@@ -19,8 +19,8 @@ fs.readFile('config.xml', 'utf8', function (err, data) {
     // Get app version
     appVersion = result['widget']['$']['version'];
     console.log('App version for TypeScript being set to: ' + appVersion);
-    
-    const versionCode = `export const appVersion: string = '${appVersion}'; // DO NOT Change! This is generated in the in-app-versioning.js script during pre-build (from config.xml)\n`;
+
+    const versionCode = `// tslint:disable-next-line:max-line-length\nexport const appVersion: string = '${appVersion}'; // DO NOT Change! This is generated in the in-app-versioning.js script during pre-build (from config.xml)\n`;
     createFile('./src/app-version.ts', versionCode);
   });
 });

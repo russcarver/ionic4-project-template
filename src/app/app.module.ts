@@ -37,7 +37,7 @@ export class AppErrorHandler implements ErrorHandler {
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     SharedModule,
-    HomePageModule // From here down, import only pages that can be the first ones a user sees (as they shouldn't be lazy loaded)
+    HomePageModule // From here down, import only landing pages (as they  shouldn't be lazy loaded)
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },

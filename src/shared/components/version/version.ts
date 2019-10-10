@@ -19,7 +19,8 @@ export class VersionComponent implements AfterViewInit {
 
   public async ngAfterViewInit(): Promise<void> {
     await this.platform.ready();
-    if (this.platform.is('ios') || this.platform.is('android')) {
+    if (this.platform.is('cordova') &&
+      (this.platform.is('ios') || this.platform.is('android'))) {
       this.appVer = await this.appVersion.getVersionNumber();
       if (this.appVer === '0') { // Happens occasionally on web builds
         this.appVer = this.defaultAppVer;

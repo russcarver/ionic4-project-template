@@ -97,7 +97,6 @@
     "no-switch-case-fall-through": true,
     "no-this-assignment": true,
     "no-unused-expression": [true, "allow-fast-null-checks"],
-    "no-use-before-declare": true,
     "no-var-keyword": true,
     "radix": true,
     "switch-default": true,

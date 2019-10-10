@@ -39,6 +39,11 @@
                 "input": "src/global.scss"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/scss"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -120,6 +125,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "configPath": "src/jest.config.js",
             "coverage": true
           }
         },

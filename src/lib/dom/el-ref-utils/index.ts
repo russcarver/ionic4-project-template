@@ -14,7 +14,8 @@ const getElement: Function = (ref: any): any => {
   return ref;
 };
 
-export const hasClass: Function = (elRef: ElementRef, className: string): boolean => elRef.nativeElement.classList.contains(className);
+export const hasClass: Function = (elRef: ElementRef, className: string): boolean =>
+  elRef.nativeElement.classList.contains(className);
 
 export const addClass: Function = (elRef: ElementRef, className: string): void => {
   getElement(elRef).classList.add(className);

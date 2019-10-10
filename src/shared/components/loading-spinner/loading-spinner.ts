@@ -10,8 +10,8 @@ const maxSpinnerTime: number = 1800000; // 30 seconds
 let spinnerDisplayPending: boolean = false;
 
 /**
- * Each instance of this component is local only to where it is included in the HTML/Typescript.  It is NOT static across all instances.  However,
- * the 'spinnerDisplayPending' field is used across all instances.
+ * Each instance of this component is local only to where it is included in the HTML/Typescript.  It is NOT static
+ * across all instances.  However, the 'spinnerDisplayPending' field is used across all instances.
  */
 @Component({
   selector: 'cmp-loading-spinner',
@@ -31,17 +31,18 @@ export class LoadingSpinnerComponent {
   public constructor(private loadingController: LoadingController) {}
 
   /**
-   * This method is also to determine if the spinner is pending but you may subscribe to the result to get notifications of the spinner becoming
-   * pending or not.  This is helpful such as in Angular reactive forms where the inputs can't use the [disabled] attribute directly, but rather
-   * the disabled state must be set on the form control in typscript.
+   * This method is also to determine if the spinner is pending but you may subscribe to the result to get notifications
+   * of the spinner becoming pending or not.  This is helpful such as in Angular reactive forms where the inputs
+   * can't use the [disabled] attribute directly, but rather the disabled state must be set on the form control in
+   * typscript.
    */
   public getSpinnerPending(): Observable<boolean> {
     return this.spinnerPendingSubject.asObservable();
   }
 
   /**
-   * This will show the spinner after 2 seconds have elapsed. Once elapsed, it will show it only if no spinner is currently displayed and the pending
-   * state has not been canceled by a dismiss.
+   * This will show the spinner after 2 seconds have elapsed. Once elapsed, it will show it only if no spinner is
+   * currently displayed and the pending state has not been canceled by a dismiss.
    */
   public showSpinner(): void {
     this.setSpinnerPending(true);
