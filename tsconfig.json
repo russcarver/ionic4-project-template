@@ -1,6 +1,5 @@
 {
   "compileOnSave": false,
-  "exclude": ["./node_modules/**.*"],
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
@@ -8,24 +7,45 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "moduleResolution": "node",
     "noStrictGenericChecks": true,
     "outDir": "./dist/out-tsc",
     "paths": {
-      "app/*": ["./app/*"],
-      "environments/*": ["./environments/*"],
-      "lib/*": ["./lib/*"],
+      "app/*": [
+        "app/*"
+      ],
+      "environments/*": [
+        "environments/*"
+      ],
+      "lib/*": [
+        "lib/*"
+      ],
       "core-js/es7/reflect": [
         "node_modules/core-js/proposals/reflect-metadata"
       ],
-      "core-js/es6/*": ["node_modules/core-js/es"],
-      "core-js/es7/*": ["node_modules/core-js/es"]
+      "core-js/es6/*": [
+        "node_modules/core-js/es"
+      ],
+      "core-js/es7/*": [
+        "node_modules/core-js/es"
+      ]
     },
     "removeComments": true,
     "sourceMap": true,
     "target": "es5",
-    "typeRoots": ["node_modules/@types"],
-    "types": ["jasmine"]
-  }
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "jasmine",
+      "node"
+    ]
+  },
+  "exclude": [
+    "./node_modules/**.*"
+  ]
 }

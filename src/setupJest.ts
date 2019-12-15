@@ -1,5 +1,6 @@
 import 'jest-preset-angular';
 import 'jest-zone-patch';
+import { noop } from 'rxjs';
 
 const mock: any = (): any => {
   let storage: any = {};
@@ -23,5 +24,17 @@ Object.defineProperty(document.body.style, 'transform', {
       configurable: true,
       enumerable: true
     };
+  }
+});
+
+Object.defineProperty(document, 'currentScript', {
+  value: document.createElement('script')
+});
+
+Object.defineProperty(window, 'google', {
+  value: {
+    maps: {
+      Geocoder: noop
+    }
   }
 });

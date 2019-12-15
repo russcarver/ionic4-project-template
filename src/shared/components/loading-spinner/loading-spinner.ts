@@ -32,9 +32,8 @@ export class LoadingSpinnerComponent {
 
   /**
    * This method is also to determine if the spinner is pending but you may subscribe to the result to get notifications
-   * of the spinner becoming pending or not.  This is helpful such as in Angular reactive forms where the inputs
-   * can't use the [disabled] attribute directly, but rather the disabled state must be set on the form control in
-   * typscript.
+   * of the spinner becoming pending or not.  This is helpful such as in Angular reactive forms where the inputs can't
+   * use the [disabled] attribute directly, but rather the disabled state must be set on the form control in typscript.
    */
   public getSpinnerPending(): Observable<boolean> {
     return this.spinnerPendingSubject.asObservable();
