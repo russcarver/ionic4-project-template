@@ -33,6 +33,7 @@ plugins/ios.json
 www/
 $RECYCLE.BIN/
 audit.txt
+results.trx
 
 .DS_Store
 Thumbs.db

@@ -122,26 +122,50 @@
             "browserTarget": "app:build"
           }
         },
-        "test": {
-          "builder": "@angular-builders/jest:run",
-          "options": {
-            "configPath": "src/jest.config.js",
-            "coverage": true
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tslintConfig": "tslint.json",
             "files": ["src/**/*.ts"],
+            "tsConfig": ["src/tsconfig.app.json"],
             "exclude": [
               "**/node_modules/**",
+              "**/coverage/**",
+              "**/dist/**",
+              "**/e2e/**",
               "src/**.*.d.ts",
               "src/jest.config.js",
               "src/setupJest.ts",
-              "src/test-base.ts"
-            ],
-            "tsConfig": ["src/tsconfig.app.json"]
+              "src/test-base.ts",
+              "src/main.ts",
+              "src/app-version.ts/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "configPath": "src/jest.config.js",
+            "coverage": true,
+            "exclude": [
+              "**/node_modules/**",
+              "**/coverage/**",
+              "**/dist/**",
+              "**/e2e/**",
+              "src/**.*.d.ts",
+              "src/jest.config.js",
+              "src/setupJest.ts",
+              "src/test-base.ts",
+              "src/main.ts",
+              "src/**/*.module.ts",
+              "src/shared/**/index.ts",
+              "**/assets/**",
+              "src/environments/**",
+              "src/shared/models/**",
+              "src/shared/enums/**",
+              "src/test-base-ext/**",
+              "src/app-version.ts/**"
+            ]
           }
         },
         "ionic-cordova-build": {

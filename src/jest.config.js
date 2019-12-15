@@ -7,22 +7,35 @@ module.exports = {
     '!**/src/*',
     '!**/src/**/*.module.ts',
     '!**/src/shared/**/index.ts',
-    '!**/main.ts',
     '!**/assets/**',
-    '!**/src/environments/environment.*',
+    '!**/src/main.ts',
+    '!**/src/environments/**',
+    '!**/src/shared/models/**',
+    '!**/src/shared/enums/**',
     '!**/src/test-base-ext/**'
   ],
   coverageDirectory: 'coverage',
+  coverageReporters: ['lcov'],
   globals: {
     'ts-jest': {
-      astTransformers: [require.resolve('jest-preset-angular/InlineHtmlStripStylesTransformer')],
-      stringifyContentPathRegex: '\\.html$',
-      tsConfig: '<rootDir>/src/tsconfig.spec.json'
+      babelConfig: {
+        presets: [['@babel/preset-env', { targets: { node: true }, modules: 'commonjs' }]],
+        plugins: ['@babel/plugin-syntax-dynamic-import']
+      }, stringifyContentPathRegex: '\\.html$', tsConfig: '<rootDir>/src/tsconfig.spec.json'
     }
   },
   moduleDirectories: ['<rootDir>/node_modules', '<rootDir>/src'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   preset: 'jest-preset-angular',
+  reporters: [
+    "default",
+    [
+      "jest-trx-results-processor",
+      {
+        "outputFile": "results.trx"
+      }
+    ]
+  ],
   roots: ['<rootDir>/src'],
   setupFilesAfterEnv: [
     '<rootDir>/src/setupJest.ts',
@@ -35,7 +48,8 @@ module.exports = {
   testURL: 'http://localhost',
   testPathIgnorePatterns: [
     '<rootDir>/node_modules',
-    '<rootDir/www',
+    '<rootDir>/www',
+    '<rootDir>/src/environments/environment.dev.ts',
     '<rootDir>/src/environments/environment.test.ts',
     '<rootDir>/src/app/*.{js}'
   ],

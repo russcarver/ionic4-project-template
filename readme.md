@@ -12,9 +12,9 @@ unit test environment, a base class for HTTP requests, a custom loading spinner 
 ### Install Node Version Manager
   1. Install nvm `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`
   1. Install avn `npm install -g avn avn-nvm avn-n` and then `avn setup`
-  1. Use nvm to install node 12.11.1 `nvm install 12.11.1`
-  1. Update npm to 6.12.0 `npm install npm@6.12.0`
-  1. If wanted, set your default node version to 12.11.1 via `nvm alias default 12.11.1`
+  1. Use nvm to install node 13.3.0 `nvm install 13.3.0`
+  1. Update npm to 6.13.4 `npm install npm@6.13.4`
+  1. If wanted, set your default node version to 13.3.0 via `nvm alias default 13.3.0`
 
 ### Ionic & Cordova Dev Usage
  - Since we may be bouncing between versions of Ionic & Cordova, we're not installing these globally. They're in the `package.json` file.
@@ -84,13 +84,15 @@ To build the project, type one of the following commands:
 - The `get-page.ts` file is ignored by git. A local copy is created when you run `npm start`. To make it load a particular page, uncomment the body of the default method and enter the page name (as a string) there.
 
 ## Test and Coverage with Jest
- - If not installed already, run `brew install watchman`
- - The first time running tests, make sure you have no javascript files in your project that are compiled from typescript
+ - If not installed already, run `brew install watchman` (mac only)
+ - The first time running tests, make sure you have no javascript files in your project that are compiled from typescript.
  - To run all the tests once, use `npm run test`
- - To run tests for only files that have changed, use `npm run test-changed`
- - To run and watch tests, use `npm test-watch`
- - During the watch, there is a runtime option for specifying a file.  Type `p` and start typing your file name.
- - With the latest Jest (24+) coverage percentages can be seen only by viewing `coverage/lcov-report/index.html`.
+ - To run and watch tests (this will re-run tests automatically when files change), use `npm test-watch`
+ - During the watch, there is a runtime option for specifying a file (or pattern).  Type `p` and start typing your file name.
+ - Coverage percentages can be seen by viewing `coverage/lcov-report/index.html`.
+ - Any mocks that you need that have the potential of being used by multiple test files, should go into `src/mocks.ts`
+ - Any services that are found to be needed for the majority of components, can be added one time in the file
+  `src/test-base.ts` in the `configureAngularTestingModule` method in the `mockProviders` array created inside the method.
 
 ## Troubleshooting Android
 
