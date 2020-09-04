@@ -115,7 +115,7 @@
     "jest-preset-angular": "7.1.1",
     "jest-trx-results-processor": "1.0.3",
     "jest-zone-patch": "0.0.10",
-    "node-sass": "4.13.0",
+    "node-sass": "4.13.1",
     "npm": "6.13.4",
     "replace-in-file": "4.2.0",
     "ts-node": "8.5.4",
